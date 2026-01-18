@@ -3,7 +3,7 @@ package cz.macek.knight.character;
 public class Dragon extends Enemy {
 
     public Dragon() {
-        super("Drak", 3, 1);
+        super("Drak", 3, 2);
     }
 
     public String fireAttack(Player player) {

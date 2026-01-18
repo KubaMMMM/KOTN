@@ -4,7 +4,7 @@ public class Shield extends Item {
     private int blockPower;
 
     public Shield(String name, int blockPower) {
-        super(name, true);
+        super(name);
         this.blockPower = blockPower;
     }
 

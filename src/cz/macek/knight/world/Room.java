@@ -7,10 +7,10 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Room {
-    private Map<String, Room> roomNorth;
-    private Map<String, Room> roomSouth;
-    private Map<String, Room> roomEast;
-    private Map<String, Room> roomWest;
+    private Room roomNorth;
+    private Room roomSouth;
+    private Room roomEast;
+    private Room roomWest;
     private String description;
     private ArrayList<Item> itemsList;
     private ArrayList<Character> characterList;
@@ -20,12 +20,9 @@ public class Room {
         this.description = description;
         this.itemsList = new ArrayList<>();
         this.characterList = new ArrayList<>();
-        this.roomNorth = new HashMap<>();
-        this.roomSouth = new HashMap<>();
-        this.roomEast = new HashMap<>();
-        this.roomWest = new HashMap<>();
         this.examined = false;
     }
+
 
     public boolean isExamined() {
         return examined;
@@ -47,8 +44,13 @@ public class Room {
         // Odebrání předmětu
     }
 
-    public void setExamined(boolean examined) {
-        this.examined = examined;
+    public void setExamined() {
+        this.examined = true;
+    }
+
+
+    public void setExamined(boolean value) {
+        this.examined = value;
     }
 
     public Character getCharacter(String name) {

@@ -23,4 +23,5 @@ public class CastleRoom extends Room{
     public boolean getUnlocked() {
         return isUnlocked;
     }
+ 
 }

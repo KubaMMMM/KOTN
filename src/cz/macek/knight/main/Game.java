@@ -3,9 +3,12 @@ package cz.macek.knight.main;
 import cz.macek.knight.character.Player;
 import cz.macek.knight.character.Enemy;
 import cz.macek.knight.world.Room;
+import java.util.HashMap;
 import java.util.Map;
 
-
+/**
+ * Hlavní třída hry Knight of the Nine
+ */
 public class Game {
     private Player currentPlayer;
     private Room currentRoom;
@@ -48,5 +51,17 @@ public class Game {
 
     public void setCurrentRoom(Room room) {
         this.currentRoom = room;
+    }
+
+    public Map<String, Room> getRooms() {
+        return rooms;
+    }
+
+    public boolean isInCombat() {
+        return inCombat;
+    }
+
+    public Enemy getCurrentEnemy() {
+        return currentEnemy;
     }
 }

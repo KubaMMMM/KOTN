@@ -8,7 +8,7 @@ import cz.macek.knight.character.Player;
 public class Potion extends Item {
 
     public Potion(String name) {
-        super(name, true);
+        super(name);
     }
 
     public void use(Player player) {
