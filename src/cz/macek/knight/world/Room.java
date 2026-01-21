@@ -23,6 +23,57 @@ public class Room {
         this.examined = false;
     }
 
+    public Room getRoomNorth() {
+        return roomNorth;
+    }
+
+    public void setRoomNorth(Room roomNorth) {
+        this.roomNorth = roomNorth;
+    }
+
+    public Room getRoomSouth() {
+        return roomSouth;
+    }
+
+    public void setRoomSouth(Room roomSouth) {
+        this.roomSouth = roomSouth;
+    }
+
+    public Room getRoomEast() {
+        return roomEast;
+    }
+
+    public void setRoomEast(Room roomEast) {
+        this.roomEast = roomEast;
+    }
+
+    public Room getRoomWest() {
+        return roomWest;
+    }
+
+    public void setRoomWest(Room roomWest) {
+        this.roomWest = roomWest;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public ArrayList<Item> getItemsList() {
+        return itemsList;
+    }
+
+    public void setItemsList(ArrayList<Item> itemsList) {
+        this.itemsList = itemsList;
+    }
+
+    public ArrayList<Character> getCharacterList() {
+        return characterList;
+    }
+
+    public void setCharacterList(ArrayList<Character> characterList) {
+        this.characterList = characterList;
+    }
 
     public boolean isExamined() {
         return examined;
