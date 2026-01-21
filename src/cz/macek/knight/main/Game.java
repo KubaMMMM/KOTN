@@ -2,8 +2,9 @@ package cz.macek.knight.main;
 
 import cz.macek.knight.character.Player;
 import cz.macek.knight.character.Enemy;
+import cz.macek.knight.data.GameLoader;
 import cz.macek.knight.world.Room;
-import java.util.HashMap;
+
 import java.util.Map;
 
 /**
@@ -38,6 +39,14 @@ public class Game {
 
     public void start() {
         // Start hry
+
+        rooms = GameLoader.loadRooms("world.json");
+        currentRoom = rooms.get("village");
+
+        if (currentRoom == null) {
+            throw new IllegalStateException("Startovní místnost neexistuje!");
+        }
+
     }
 
     // Gettery a settery

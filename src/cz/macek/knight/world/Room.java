@@ -95,6 +95,8 @@ public class Room {
         // Odebrání předmětu
     }
 
+
+
     public void setExamined() {
         this.examined = true;
     }
@@ -117,4 +119,6 @@ public class Room {
         // Získání sousední místnosti
         return null;
     }
+
+
 }

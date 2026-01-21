@@ -1,53 +1,58 @@
 package cz.macek.knight.data;
 
-import com.google.gson.Gson;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.macek.knight.world.Room;
-
-import java.io.FileReader;
+import java.io.File;
 import java.util.HashMap;
 import java.util.Map;
 
 public class GameLoader {
 
+    /**
+     * Načte herní svět ze souboru JSON a vytvoří propojené místnosti
+     */
     public static Map<String, Room> loadRooms(String filePath) {
 
-        Gson gson = new Gson();
+        ObjectMapper mapper = new ObjectMapper();
         GameData data;
 
         try {
-            // Gson udělá CELÉ parsování
-            data = gson.fromJson(new FileReader(filePath), GameData.class);
+            // 1️⃣ Načtení JSON souboru do datových tříd
+            data = mapper.readValue(new File(filePath), GameData.class);
         } catch (Exception e) {
-            throw new RuntimeException("Nelze načíst svět", e);
+            throw new RuntimeException("Chyba při načítání světa ze souboru: " + filePath, e);
         }
 
+        // 2️⃣ Vytvoření všech místností (zatím bez propojení)
         Map<String, Room> rooms = new HashMap<>();
 
-        // 1️⃣ vytvoření místností
         for (RoomData rd : data.getRooms()) {
-            rooms.put(rd.getId(), new Room(rd.getDescription()));
+            Room room = new Room(rd.getDescription());
+            rooms.put(rd.getId(), room);
         }
 
-        // 2️⃣ propojení místností
+        // 3️⃣ Propojení místností podle světových stran
         for (RoomData rd : data.getRooms()) {
-            Room room = rooms.get(rd.getId());
+            Room currentRoom = rooms.get(rd.getId());
 
-            if (rd.getExits() == null) continue;
+            if (rd.getExits() == null) {
+                continue;
+            }
 
-            if (rd.getExits().get("north") != null)
-                room.setRoomNorth(rooms.get(rd.getExits().get("north")));
-
-            if (rd.getExits().get("south") != null)
-                room.setRoomSouth(rooms.get(rd.getExits().get("south")));
-
-            if (rd.getExits().get("east") != null)
-                room.setRoomEast(rooms.get(rd.getExits().get("east")));
-
-            if (rd.getExits().get("west") != null)
-                room.setRoomWest(rooms.get(rd.getExits().get("west")));
+            if (rd.getExits().get("north") != null) {
+                currentRoom.setRoomNorth(rooms.get(rd.getExits().get("north")));
+            }
+            if (rd.getExits().get("south") != null) {
+                currentRoom.setRoomSouth(rooms.get(rd.getExits().get("south")));
+            }
+            if (rd.getExits().get("east") != null) {
+                currentRoom.setRoomEast(rooms.get(rd.getExits().get("east")));
+            }
+            if (rd.getExits().get("west") != null) {
+                currentRoom.setRoomWest(rooms.get(rd.getExits().get("west")));
+            }
         }
 
         return rooms;
     }
 }
-
