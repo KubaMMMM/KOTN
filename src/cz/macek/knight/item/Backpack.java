@@ -18,6 +18,18 @@ public class Backpack {
         return items.isEmpty();
     }
 
+    public int getSize() {
+        return size;
+    }
+
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public void setItems(ArrayList<Item> items) {
+        this.items = items;
+    }
+
     public void addItem(Item item) {
         // Přidání předmětu
     }

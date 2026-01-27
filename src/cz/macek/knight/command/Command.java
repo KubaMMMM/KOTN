@@ -4,5 +4,5 @@ import cz.macek.knight.main.Game;
 
 
 public interface Command {
-    String execute(Game game);
+    String execute(String param, Game game);
 }

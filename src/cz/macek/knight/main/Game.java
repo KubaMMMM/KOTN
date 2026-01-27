@@ -16,6 +16,16 @@ public class Game {
     private Map<String, Room> rooms;
     private boolean inCombat;
     private Enemy currentEnemy;
+    private boolean konec;
+
+
+    public boolean getKonec() {
+        return konec;
+    }
+
+    public void setKonec(boolean konec) {
+        this.konec = konec;
+    }
 
     public Game() {
         // Constructor
