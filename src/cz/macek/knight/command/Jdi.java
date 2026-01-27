@@ -2,7 +2,7 @@ package cz.macek.knight.command;
 
 import cz.macek.knight.main.Game;
 
-public class Move implements Command{
+public class Jdi implements Command{
 
 
     @Override
