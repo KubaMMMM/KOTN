@@ -1,0 +1,91 @@
+{
+  "rooms": [
+    {
+      "id": "vesnice",
+      "description": "Vesnice s kovárnou. Bezpečné místo a hlavní centrum dění.",
+      "exits": {
+        "north": "hrad",
+        "east": "les",
+        "south": "louka",
+        "west": "cesta_k_drakovi"
+      }
+    },
+
+    {
+      "id": "hrad",
+      "description": "Hrad. Přístupná je pouze zamčená komnata.",
+      "exits": {
+        "south": "vesnice"
+      }
+    },
+
+    {
+      "id": "les",
+      "description": "Temný les. Roste zde magická houba a skrývá se tu skřet.",
+      "exits": {
+        "west": "vesnice",
+        "east": "plaz"
+      }
+    },
+
+    {
+      "id": "plaz",
+      "description": "Pláž s vrakem lodi. Ve vraku je ukrytý poklad, ale hlídají ho skřeti.",
+      "exits": {
+        "west": "les"
+      }
+    },
+
+    {
+      "id": "louka",
+      "description": "Otevřená louka. Hlídá ji nemrtvý strážce.",
+      "exits": {
+        "north": "vesnice",
+        "east": "jeskyne"
+      }
+    },
+
+    {
+      "id": "jeskyne",
+      "description": "Temná jeskyně. Uvnitř sídlí zlobr a je zde ukrytý meč.",
+      "exits": {
+        "west": "louka"
+      }
+    },
+
+    {
+      "id": "cesta_k_drakovi",
+      "description": "Spálená cesta vedoucí k drakovu doupěti. Strážce varuje před nebezpečím.",
+      "exits": {
+        "east": "vesnice",
+        "west": "drak",
+        "north": "utesy",
+        "south": "chyse_jezibaby"
+      }
+    },
+
+    {
+      "id": "utesy",
+      "description": "Útesy. Nachází se zde zaklínač, který poradí ohledně draka.",
+      "exits": {
+        "south": "cesta_k_drakovi"
+      }
+    },
+
+    {
+      "id": "chyse_jezibaby",
+      "description": "Chýše ježibaby. Vaří lektvar odolnosti proti ohni.",
+      "exits": {
+        "north": "cesta_k_drakovi"
+      }
+    },
+
+    {
+      "id": "drak",
+      "description": "Doupě draka. Finální souboj.",
+      "exits": {
+        "east": "cesta_k_drakovi"
+      }
+    }
+  ]
+}
