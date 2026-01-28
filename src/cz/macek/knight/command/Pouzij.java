@@ -21,8 +21,7 @@ public class Pouzij implements Command{
                 lektvar.use(game.getCurrentPlayer());
                 return "Vypil jste lektvar a po pocatecnim paleni v krku se citite plny sily, jak kdyby vam srdce horelo.";
             }
-            return "Dany predmet nelze pouzit";
         }
-        return "CHYBA V METODE POUZIJ";
+        return "Dany predmet nelze pouzit";
     }
 }

@@ -6,7 +6,7 @@ public class Odemknout implements Command{
     @Override
     public String execute(String param, Game game) {
 
-        if(game.getCurrentRoom().equals())
+        return game.odemkni();
 
     }
 }

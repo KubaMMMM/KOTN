@@ -12,16 +12,21 @@ public class Jdi implements Command{
         switch (param){
 
             case "S": game.setCurrentRoom(game.getCurrentRoom().getRoomSouth());
+            break;
 
             case "N": game.setCurrentRoom(game.getCurrentRoom().getRoomNorth());
+            break;
 
             case "E": game.setCurrentRoom(game.getCurrentRoom().getRoomEast());
+            break;
 
             case "W": game.setCurrentRoom(game.getCurrentRoom().getRoomWest());
+            break;
 
             default:
-                return "Nacházíš se v místnosti"+ game.getCurrentRoom().getDescription();
-
+                return "Timto smerem se jit neda";
         }
+        return "Nacházíš se v místnosti"+ game.getCurrentRoom().getDescription();
+
     }
 }

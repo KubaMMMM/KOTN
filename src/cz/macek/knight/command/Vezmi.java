@@ -19,8 +19,8 @@ public class Vezmi implements Command{
                 return "Sebrali jste "+ i.getName()+ ".";
             }
 
-            return "Nikde v okoli se "+ param+ " nenachazi.";
+
         }
-        return "CHYBA V METODE VEZMI";
+        return "Nikde v okoli se "+ param+ " nenachazi.";
     }
 }

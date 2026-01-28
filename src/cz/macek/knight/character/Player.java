@@ -24,8 +24,14 @@ public class Player extends Character {
         this.isDefending = false;
     }
 
+
+
     public int getLives() {
         return lives;
+    }
+
+    public void damage(int amount){
+        lives -= amount;
     }
 
     public void loseLife() {
@@ -42,6 +48,47 @@ public class Player extends Character {
 
     public boolean hasShield() {
         return shield != null;
+    }
+
+    public boolean hasItem(String itemName){
+
+        return backpack.hasItem(itemName);
+    }
+
+    public Armor getArmor() {
+        return armor;
+    }
+
+    public void setArmor(Armor armor) {
+        this.armor = armor;
+    }
+
+    public Weapon getWeapon() {
+        return weapon;
+    }
+
+    public void setWeapon(Weapon weapon) {
+        this.weapon = weapon;
+    }
+
+    public Shield getShield() {
+        return shield;
+    }
+
+    public void setShield(Shield shield) {
+        this.shield = shield;
+    }
+
+    public boolean isHasFireResistance() {
+        return hasFireResistance;
+    }
+
+    public void setHasFireResistance(boolean hasFireResistance) {
+        this.hasFireResistance = hasFireResistance;
+    }
+
+    public boolean isKnowsWeakness() {
+        return knowsWeakness;
     }
 
     public void setDefending(boolean defending) {

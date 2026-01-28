@@ -14,18 +14,24 @@ public class Enemy extends Character {
     }
 
     public String attack(Player player) {
-        // Útok na hráče
-        return "";
+
+        player.damage(damage);
+        return "Nepritel vas poskodil za "+ damage+ "HP";
     }
 
     public String chargeAttack() {
-        // Nabíjení útoku
-        return "";
+        hasChargedAttack = true;
+        return "Nepritel chysta silny utok ktery dalsi kolo pouzije";
     }
 
     public String attackCharged(Player player) {
-        // Nabytý útok
-        return "";
+
+        if(hasChargedAttack){
+            player.damage(damage+1);
+            return "Nepritel vas tezce uderil za "+damage+1+ "HP";
+        }
+
+        return "CHYBA NENI CAHGENUTY ATTACK";
     }
 
     public String die() {

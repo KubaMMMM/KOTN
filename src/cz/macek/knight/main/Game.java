@@ -2,7 +2,10 @@ package cz.macek.knight.main;
 
 import cz.macek.knight.character.Player;
 import cz.macek.knight.character.Enemy;
+import cz.macek.knight.command.Command;
+import cz.macek.knight.command.CommandParser;
 import cz.macek.knight.data.GameLoader;
+import cz.macek.knight.item.Shield;
 import cz.macek.knight.world.Room;
 
 import java.util.Map;
@@ -17,7 +20,7 @@ public class Game {
     private boolean inCombat;
     private Enemy currentEnemy;
     private boolean konec;
-
+    private CommandParser commandParser;
 
     public boolean getKonec() {
         return konec;
@@ -28,11 +31,55 @@ public class Game {
     }
 
     public Game() {
-        // Constructor
+        commandParser = new CommandParser();
     }
 
-    public void processCommand(String input) {
-        // Zpracování příkazů
+    public String odemkni() {
+
+        Room castle = rooms.get("castle");
+
+        if (currentRoom != castle) {
+            return "Tady není co odemykat.";
+        }
+
+        if (!currentPlayer.hasItem("klic")) {
+            return "Nemáš klíč.";
+        }
+
+        return "Odemkl jsi komnatu na hradě.";
+    }
+
+    public String search() {
+
+        if(isInCombat()){
+            return "nepritel vas prohledat okoli nenecha";
+        }
+        getCurrentRoom().setExamined(true);
+
+
+
+        return "Porozhledli jste se okolo sebe a zpozorovali jste :"+ getCurrentRoom().getCharacterList().toString()+" "+getCurrentRoom().getItemsList().toString();
+    }
+
+
+    public String processCommand(String input) {
+
+        if (input == null || input.trim().isEmpty()) {
+            return "Zadej příkaz.";
+        }
+
+        String[] parts = input.trim().split("\\s+", 2);
+
+        String commandName = parts[0].toLowerCase();
+        String param = parts.length > 1 ? parts[1] : "";
+
+        Command command = commandParser.getCommand(commandName);
+
+        if (command == null) {
+            return "Neznámý příkaz.";
+        }
+
+        return command.execute(param, this);
     }
 
     public void print(String message) {
