@@ -80,17 +80,15 @@ public class Room {
     }
 
     public void addCharacter(Character character) {
-        // Přidání postavy
+        characterList.add(character);
     }
-
     public void addItem(Item item) {
         // Přidání předmětu
     }
 
     public void removeCharacter(Character character) {
-        // Odebrání postavy
+        characterList.remove(character);
     }
-
     public void removeItem(Item item) {
         // Odebrání předmětu
     }

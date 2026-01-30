@@ -1,5 +1,7 @@
 package cz.macek.knight.data;
 
+import cz.macek.knight.item.*;
+import cz.macek.knight.character.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import cz.macek.knight.world.Room;
 import java.io.File;
@@ -17,21 +19,29 @@ public class GameLoader {
         GameData data;
 
         try {
-            // 1️⃣ Načtení JSON souboru do datových tříd
             data = mapper.readValue(new File(filePath), GameData.class);
         } catch (Exception e) {
             throw new RuntimeException("Chyba při načítání světa ze souboru: " + filePath, e);
         }
 
-        // 2️⃣ Vytvoření všech místností (zatím bez propojení)
         Map<String, Room> rooms = new HashMap<>();
 
         for (RoomData rd : data.getRooms()) {
             Room room = new Room(rd.getDescription());
+
+            for (String itemId : rd.getItems()) {
+                ItemData itemData = data.getItems().get(itemId);
+                room.addItem(ItemFactory.create(itemId, itemData));
+            }
+
+
+            for (String charId : rd.getCharacters()) {
+                room.addCharacter(CharacterFactory.create(charId));
+            }
+
             rooms.put(rd.getId(), room);
         }
 
-        // 3️⃣ Propojení místností podle světových stran
         for (RoomData rd : data.getRooms()) {
             Room currentRoom = rooms.get(rd.getId());
 
@@ -51,6 +61,8 @@ public class GameLoader {
             if (rd.getExits().get("west") != null) {
                 currentRoom.setRoomWest(rooms.get(rd.getExits().get("west")));
             }
+
+
         }
 
         return rooms;

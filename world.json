@@ -1,91 +1,132 @@
 {
+  "items": {
+    "sword": {
+      "name": "Meč",
+      "damage": 1
+    },
+    "armor": {
+      "name": "Zbroj",
+      "defense": 1
+    },
+    "shield": {
+      "name": "Štít",
+      "blockPower": 1
+    },
+    "potion": {
+      "name": "Lektvar odolnosti proti ohni"
+    },
+    "mushroom": {
+      "name": "Magická houba"
+    },
+    "apple": {
+      "name": "Obsidiánové jablko"
+    },
+    "key_part_1": {
+      "name": "Část klíče 1",
+      "partNumber": 1
+    },
+    "key_part_2": {
+      "name": "Část klíče 2",
+      "partNumber": 2
+    }
+  },
+
   "rooms": [
     {
-      "id": "vesnice",
-      "description": "Vesnice s kovárnou. Bezpečné místo a hlavní centrum dění.",
+      "id": "village",
+      "description": "Nacházíš se ve vesnici. Je zde kovář a cítíš se v bezpečí.",
       "exits": {
-        "north": "hrad",
-        "east": "les",
-        "south": "louka",
-        "west": "cesta_k_drakovi"
+        "north": "castle",
+        "east": "forest",
+        "south": "meadow",
+        "west": "cliffs"
+      },
+      "characters": ["blacksmith"]
+    },
+
+    {
+      "id": "castle",
+      "description": "Stojíš před zamčenou komnatou na hradě.",
+      "exits": {
+        "south": "village"
+      },
+      "items": ["shield"]
+    },
+
+    {
+      "id": "forest",
+      "description": "Temný les plný nebezpečí. Něco se hýbe mezi stromy.",
+      "exits": {
+        "west": "village"
+      },
+      "characters": ["enemy"],
+      "items": ["mushroom", "key_part_1"]
+    },
+
+    {
+      "id": "meadow",
+      "description": "Otevřená louka. Cítíš chlad přicházející od nemrtvého strážce.",
+      "exits": {
+        "north": "village"
+      },
+      "characters": ["enemy"],
+      "items": ["apple", "key_part_2"]
+    },
+
+    {
+      "id": "cliffs",
+      "description": "Vysoké útesy. Stojí zde zaklínač sledující obzor.",
+      "exits": {
+        "east": "village",
+        "south": "cave"
+      },
+      "characters": ["wizard"]
+    },
+
+    {
+      "id": "cave",
+      "description": "Temná jeskyně. Silný zlobr blokuje cestu dál.",
+      "exits": {
+        "north": "cliffs",
+        "south": "beach"
+      },
+      "characters": ["enemy"],
+      "items": ["sword"]
+    },
+
+    {
+      "id": "beach",
+      "description": "Pláž s vrakem lodi. Skřeti hlídají poklad.",
+      "exits": {
+        "north": "cave",
+        "east": "hut"
+      },
+      "characters": ["enemy"]
+    },
+
+    {
+      "id": "hut",
+      "description": "Chýše ježibaby. Vzduch je cítit magií.",
+      "exits": {
+        "west": "beach"
+      },
+      "characters": ["witch"],
+      "items": ["potion"]
+    },
+
+    {
+      "id": "dragon_path",
+      "description": "Cesta k drakovi. Vzduch je spálený a nebezpečný.",
+      "exits": {
+        "north": "village",
+        "south": "dragon_lair"
       }
     },
 
     {
-      "id": "hrad",
-      "description": "Hrad. Přístupná je pouze zamčená komnata.",
-      "exits": {
-        "south": "vesnice"
-      }
-    },
-
-    {
-      "id": "les",
-      "description": "Temný les. Roste zde magická houba a skrývá se tu skřet.",
-      "exits": {
-        "west": "vesnice",
-        "east": "plaz"
-      }
-    },
-
-    {
-      "id": "plaz",
-      "description": "Pláž s vrakem lodi. Ve vraku je ukrytý poklad, ale hlídají ho skřeti.",
-      "exits": {
-        "west": "les"
-      }
-    },
-
-    {
-      "id": "louka",
-      "description": "Otevřená louka. Hlídá ji nemrtvý strážce.",
-      "exits": {
-        "north": "vesnice",
-        "east": "jeskyne"
-      }
-    },
-
-    {
-      "id": "jeskyne",
-      "description": "Temná jeskyně. Uvnitř sídlí zlobr a je zde ukrytý meč.",
-      "exits": {
-        "west": "louka"
-      }
-    },
-
-    {
-      "id": "cesta_k_drakovi",
-      "description": "Spálená cesta vedoucí k drakovu doupěti. Strážce varuje před nebezpečím.",
-      "exits": {
-        "east": "vesnice",
-        "west": "drak",
-        "north": "utesy",
-        "south": "chyse_jezibaby"
-      }
-    },
-
-    {
-      "id": "utesy",
-      "description": "Útesy. Nachází se zde zaklínač, který poradí ohledně draka.",
-      "exits": {
-        "south": "cesta_k_drakovi"
-      }
-    },
-
-    {
-      "id": "chyse_jezibaby",
-      "description": "Chýše ježibaby. Vaří lektvar odolnosti proti ohni.",
-      "exits": {
-        "north": "cesta_k_drakovi"
-      }
-    },
-
-    {
-      "id": "drak",
-      "description": "Doupě draka. Finální souboj.",
-      "exits": {
-        "east": "cesta_k_drakovi"
-      }
+      "id": "dragon_lair",
+      "description": "Doupě draka. Obrovský drak se před tebou zvedá.",
+      "characters": ["dragon"]
     }
   ]
 }

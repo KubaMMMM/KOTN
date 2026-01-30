@@ -9,13 +9,27 @@ public class ItemData {
         private String description;
 
 
-        public String getId() {
-            return id;
-        }
+       private Integer damage;
+       private Integer defense;
+       private Integer blockPower;
+       private Integer partNumber;
+
+       public String getId() { return id; }
+       public String getName() { return name; }
+
+       public Integer getDamage() { return damage; }
+       public Integer getDefense() { return defense; }
+       public Integer getBlockPower() { return blockPower; }
+       public Integer getPartNumber() { return partNumber; }
+
+
+
 
         public void setId(String id) {
             this.id = id;
         }
+
+
 
         public String getType() {
             return type;
@@ -25,9 +39,7 @@ public class ItemData {
             this.type = type;
         }
 
-        public String getName() {
-            return name;
-        }
+
 
         public void setName(String name) {
             this.name = name;
