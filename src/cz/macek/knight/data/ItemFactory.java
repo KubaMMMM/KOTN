@@ -8,6 +8,10 @@ public class ItemFactory {
 
         return switch (itemId) {
 
+
+            case "treasure" ->
+                    new Treasure();
+
             // ===== ZBRANĚ =====
             case "sword" ->
                     new Weapon(

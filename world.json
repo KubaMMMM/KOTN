@@ -28,6 +28,11 @@
     "key_part_2": {
       "name": "Část klíče 2",
       "partNumber": 2
+    },
+    "items": {
+      "treasure": {
+        "name": "Poklad"
+      }
     }
   },
 
@@ -101,6 +106,7 @@
         "north": "cave",
         "east": "hut"
       },
+      "items": ["treasure"],
       "characters": ["enemy"]
     },
 
