@@ -1,5 +1,8 @@
 package cz.macek.knight.character;
 
+import cz.macek.knight.item.Armor;
+import cz.macek.knight.main.Game;
+
 public class Blacksmith extends Ally {
 
     public Blacksmith() {
@@ -7,12 +10,26 @@ public class Blacksmith extends Ally {
     }
 
     @Override
-    public String interact(Player player) {
-        return craftArmor(player);
+    public String interact(Player player, Game game) {
+        if (player.getArmor() != null) {
+            return "Zbroj už máš. Víc ti teď pomoci nemohu.";
+        }
+
+        if (!player.hasItem("Poklad")) {
+            return "Bez peněz ti zbroj nevyrobím. Na pláži je prý vrak lodi…";
+        }
+
+        // výroba zbroje
+       craftArmor(player);
+
+        return "Kovář ti z pokladu vyrobil pevnou zbroj.";
     }
 
-    public String craftArmor(Player player) {
-        // Výroba zbroje
-        return "";
+    public void craftArmor(Player player){
+        player.setArmor(new Armor("Zbroj", 1));
+        player.getBackpack().removeItem(player.getBackpack().getItem("Poklad"));
     }
-}
+
+   }
+
+

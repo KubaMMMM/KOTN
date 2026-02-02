@@ -1,5 +1,7 @@
 package cz.macek.knight.character;
 
+import cz.macek.knight.main.Game;
+
 public class Enemy extends Character {
 
     protected int damage;
@@ -101,7 +103,7 @@ public class Enemy extends Character {
     }
 
     @Override
-    public String interact(Player player) {
+    public String interact(Player player, Game game) {
         return name + " je nepřítel!";
     }
 }

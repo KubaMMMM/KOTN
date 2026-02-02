@@ -1,5 +1,7 @@
 package cz.macek.knight.character;
 
+import cz.macek.knight.main.Game;
+
 public class Dragon extends Enemy {
 
     public Dragon() {
@@ -90,7 +92,7 @@ public class Dragon extends Enemy {
 
 
     @Override
-    public String interact(Player player) {
+    public String interact(Player player, Game game) {
         return "Drak tě pozoruje svými žlutými očima...";
     }
 }

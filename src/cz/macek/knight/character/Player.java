@@ -4,11 +4,14 @@ import cz.macek.knight.item.Backpack;
 import cz.macek.knight.item.Armor;
 import cz.macek.knight.item.Weapon;
 import cz.macek.knight.item.Shield;
+import cz.macek.knight.main.Game;
+import cz.macek.knight.world.Room;
 
 import java.util.Random;
 
 
 public class Player extends Character {
+    private Room position;
     private Backpack backpack;
     private Armor armor;
     private Weapon weapon;
@@ -27,7 +30,13 @@ public class Player extends Character {
         this.isDefending = false;
     }
 
+    public Room getPosition() {
+        return position;
+    }
 
+    public void setPosition(Room position) {
+        this.position = position;
+    }
 
     public int getLives() {
         return lives;
@@ -152,7 +161,7 @@ public class Player extends Character {
     }
 
     @Override
-    public String interact(Player player) {
+    public String interact(Player player, Game game) {
         return "To jsem já!";
     }
 

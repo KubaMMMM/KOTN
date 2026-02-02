@@ -38,6 +38,7 @@ public class Jdi implements Command{
 
         // přesun
         game.setCurrentRoom(nextRoom);
+        game.getCurrentPlayer().setPosition(nextRoom);
 
         if (nextRoom.containsEnemy()) {
             game.setCurrentEnemy(nextRoom.getEnemies().get(0));

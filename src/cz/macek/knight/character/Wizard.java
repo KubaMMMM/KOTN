@@ -1,5 +1,8 @@
 package cz.macek.knight.character;
 
+import cz.macek.knight.main.Game;
+import cz.macek.knight.world.Room;
+
 public class Wizard extends Ally {
 
     public Wizard() {
@@ -7,12 +10,23 @@ public class Wizard extends Ally {
     }
 
     @Override
-    public String interact(Player player) {
-        return revealWeakness(player);
+    public String interact(Player player, Game game) {
+
+        if(player.knowsWeakness()){
+            return "Drak uz nema dalsi slabiny";
+        }
+
+        if(!game.isOgreDefeated()){
+            return "Kdyz zbavis jeskyni u pole obra tak ti prozradim drakovu slabinu";
+        }
+
+        revealWeakness(player);
+        return "Zaklicnac ti prozradil drakovo slabe misto";
+
     }
 
-    public String revealWeakness(Player player) {
-        // Odhalení slabiny
-        return "";
+    public void revealWeakness(Player player) {
+
+        player.setKnowsWeakness(true);
     }
 }

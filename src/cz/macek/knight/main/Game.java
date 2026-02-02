@@ -159,6 +159,11 @@ public class Game {
         return "Porozhledli jste se okolo sebe a zpozorovali jste :"+ getCurrentRoom().getCharacterList().toString()+" "+getCurrentRoom().getItemsList().toString();
     }
 
+    public boolean isOgreDefeated() {
+        Room cave = rooms.get("cave");
+        return cave != null && !cave.containsEnemy();
+    }
+
 
     public String processCommand(String input) {
 
@@ -186,15 +191,16 @@ public class Game {
     }
 
     public void start() {
-        // Start hry
 
         rooms = GameLoader.loadRooms("world.json");
-        currentRoom = rooms.get("village");
 
+        currentRoom = rooms.get("village");
         if (currentRoom == null) {
             throw new IllegalStateException("Startovní místnost neexistuje!");
         }
 
+        currentPlayer = new Player("Rytíř");
+        currentPlayer.setPosition(currentRoom);
     }
 
     // Gettery a settery
@@ -208,6 +214,8 @@ public class Game {
 
     public void setCurrentRoom(Room room) {
         this.currentRoom = room;
+        currentPlayer.setPosition(room);
+
     }
 
     public Map<String, Room> getRooms() {

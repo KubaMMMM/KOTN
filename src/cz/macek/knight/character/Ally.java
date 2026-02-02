@@ -1,15 +1,19 @@
 package cz.macek.knight.character;
 
+import cz.macek.knight.data.GameLoader;
+import cz.macek.knight.main.Game;
+
 public abstract class Ally extends Character {
 
     private boolean questCompleted = false;
+
 
     public Ally(String name) {
         super(name);
     }
 
     @Override
-    public abstract String interact(Player player);
+    public abstract String interact(Player player, Game game);
 
     public boolean isQuestCompleted() {
         return questCompleted;

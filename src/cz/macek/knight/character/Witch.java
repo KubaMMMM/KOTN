@@ -1,5 +1,7 @@
 package cz.macek.knight.character;
 
+import cz.macek.knight.main.Game;
+
 public class Witch extends Ally {
 
     public Witch() {
@@ -7,7 +9,7 @@ public class Witch extends Ally {
     }
 
     @Override
-    public String interact(Player player) {
+    public String interact(Player player, Game game) {
         return brewPotion(player);
     }
 
