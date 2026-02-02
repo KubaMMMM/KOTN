@@ -3,6 +3,7 @@ package cz.macek.knight.data;
 import cz.macek.knight.item.*;
 import cz.macek.knight.character.*;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import cz.macek.knight.world.CastleRoom;
 import cz.macek.knight.world.Room;
 import java.io.File;
 import java.util.HashMap;
@@ -27,16 +28,26 @@ public class GameLoader {
         Map<String, Room> rooms = new HashMap<>();
 
         for (RoomData rd : data.getRooms()) {
-            Room room = new Room(rd.getDescription());
 
-            for (String itemId : rd.getItems()) {
-                ItemData itemData = data.getItems().get(itemId);
-                room.addItem(ItemFactory.create(itemId, itemData));
+            Room room;
+
+            if ("castle".equals(rd.getId())) {
+                room = new CastleRoom(rd.getDescription());
+            } else {
+                room = new Room(rd.getDescription());
             }
 
+            if (rd.getItems() != null) {
+                for (String itemId : rd.getItems()) {
+                    ItemData itemData = data.getItems().get(itemId);
+                    room.addItem(ItemFactory.create(itemId, itemData));
+                }
+            }
 
-            for (String charId : rd.getCharacters()) {
-                room.addCharacter(CharacterFactory.create(charId));
+            if (rd.getCharacters() != null) {
+                for (String charId : rd.getCharacters()) {
+                    room.addCharacter(CharacterFactory.create(charId));
+                }
             }
 
             rooms.put(rd.getId(), room);

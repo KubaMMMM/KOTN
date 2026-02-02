@@ -1,6 +1,7 @@
 package cz.macek.knight.command;
 
 import cz.macek.knight.main.Game;
+import cz.macek.knight.world.Room;
 
 public class Jdi implements Command{
 
@@ -8,25 +9,42 @@ public class Jdi implements Command{
     @Override
     public String execute(String param, Game game) {
 
-
-        switch (param){
-
-            case "S": game.setCurrentRoom(game.getCurrentRoom().getRoomSouth());
-            break;
-
-            case "N": game.setCurrentRoom(game.getCurrentRoom().getRoomNorth());
-            break;
-
-            case "E": game.setCurrentRoom(game.getCurrentRoom().getRoomEast());
-            break;
-
-            case "W": game.setCurrentRoom(game.getCurrentRoom().getRoomWest());
-            break;
-
-            default:
-                return "Timto smerem se jit neda";
+        if(game.isInCombat()){
+            return "nepritel vas nenecha odejit";
         }
-        return "Nacházíš se v místnosti"+ game.getCurrentRoom().getDescription();
 
+        Room nextRoom = null;
+
+        switch (param) {
+            case "S":
+                nextRoom = game.getCurrentRoom().getRoomSouth();
+                break;
+            case "N":
+                nextRoom = game.getCurrentRoom().getRoomNorth();
+                break;
+            case "E":
+                nextRoom = game.getCurrentRoom().getRoomEast();
+                break;
+            case "W":
+                nextRoom = game.getCurrentRoom().getRoomWest();
+                break;
+            default:
+                return "Tímto směrem se jít nedá.";
+        }
+
+        if (nextRoom == null) {
+            return "Tímto směrem se jít nedá.";
+        }
+
+        // přesun
+        game.setCurrentRoom(nextRoom);
+
+        if (nextRoom.containsEnemy()) {
+            game.setCurrentEnemy(nextRoom.getEnemies().get(0));
+        } else {
+            game.setCurrentEnemy(null);
+        }
+
+        return "Nacházíš se v místnosti: " + nextRoom.getDescription();
     }
 }

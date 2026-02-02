@@ -12,6 +12,8 @@ public class Potion extends Item {
     }
 
     public void use(Player player) {
-        // Použití lektvaru
+
+        player.setFireResistance(true);
+
     }
 }

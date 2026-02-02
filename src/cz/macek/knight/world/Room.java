@@ -1,6 +1,7 @@
 package cz.macek.knight.world;
 
 import cz.macek.knight.character.Character;
+import cz.macek.knight.character.Enemy;
 import cz.macek.knight.item.Item;
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -21,6 +22,31 @@ public class Room {
         this.itemsList = new ArrayList<>();
         this.characterList = new ArrayList<>();
         this.examined = false;
+    }
+
+    public ArrayList<Enemy> getEnemies(){
+
+        ArrayList<Enemy> enemies = new ArrayList<>();
+
+        for(Character ch : characterList){
+
+            if(ch instanceof Enemy){
+                enemies.add((Enemy)ch);
+            }
+        }
+        return enemies;
+    }
+
+
+    public boolean containsEnemy(){
+
+        for(Character ch : characterList){
+
+            if(ch instanceof Enemy){
+                return true;
+            }
+        }
+        return false;
     }
 
     public Room getRoomNorth() {
@@ -83,14 +109,16 @@ public class Room {
         characterList.add(character);
     }
     public void addItem(Item item) {
-        // Přidání předmětu
+
+        itemsList.add(item);
     }
 
     public void removeCharacter(Character character) {
         characterList.remove(character);
     }
     public void removeItem(Item item) {
-        // Odebrání předmětu
+
+        itemsList.remove(item);
     }
 
 
@@ -105,7 +133,14 @@ public class Room {
     }
 
     public Character getCharacter(String name) {
-        // Získání postavy podle jména
+
+        for(Character ch : characterList){
+
+            if(ch.getName().equals(name)){
+                return ch;
+            }
+        }
+
         return null;
     }
 

@@ -15,10 +15,10 @@
     "potion": {
       "name": "Lektvar odolnosti proti ohni"
     },
-    "mushroom": {
+    "ingredient1": {
       "name": "Magická houba"
     },
-    "apple": {
+    "ingredient2": {
       "name": "Obsidiánové jablko"
     },
     "key_part_1": {
@@ -31,7 +31,7 @@
     },
     "items": {
       "treasure": {
-        "name": "Poklad"
+        "name": "treasure"
       }
     }
   },
@@ -64,8 +64,8 @@
       "exits": {
         "west": "village"
       },
-      "characters": ["enemy"],
-      "items": ["mushroom", "key_part_1"]
+      "characters": ["imp"],
+      "items": ["ingredient1", "key_part_1"]
     },
 
     {
@@ -74,8 +74,8 @@
       "exits": {
         "north": "village"
       },
-      "characters": ["enemy"],
-      "items": ["apple", "key_part_2"]
+      "characters": ["undead"],
+      "items": ["ingredient2", "key_part_2"]
     },
 
     {
@@ -95,7 +95,7 @@
         "north": "cliffs",
         "south": "beach"
       },
-      "characters": ["enemy"],
+      "characters": ["ogre"],
       "items": ["sword"]
     },
 
@@ -107,7 +107,7 @@
         "east": "hut"
       },
       "items": ["treasure"],
-      "characters": ["enemy"]
+      "characters": ["imp", "imp"]
     },
 
     {

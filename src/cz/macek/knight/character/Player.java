@@ -5,6 +5,8 @@ import cz.macek.knight.item.Armor;
 import cz.macek.knight.item.Weapon;
 import cz.macek.knight.item.Shield;
 
+import java.util.Random;
+
 
 public class Player extends Character {
     private Backpack backpack;
@@ -15,6 +17,7 @@ public class Player extends Character {
     private boolean knowsWeakness;
     private boolean isDefending;
     private int loosingHP;
+    private boolean isDodging = false;
 
     public Player(String name) {
         super(name);
@@ -30,16 +33,41 @@ public class Player extends Character {
         return lives;
     }
 
-    public void damage(int amount){
-        lives -= amount;
+
+
+
+    public boolean tryDodge() {
+        return Math.random() < 0.25; // 25 %
     }
+
+
+    public int attack(Enemy e) {
+
+        int damage = 1; // základní útok
+
+        if (weapon != null) {
+            damage += weapon.getDamage();
+        }
+
+        if (e instanceof Dragon && knowsWeakness) {
+            damage += 1;
+        }
+
+        return damage;
+    }
+
+
+
 
     public void loseLife() {
         lives--;
     }
 
     public void applyLoosingHP() {
-        // Aplikování postupného poškození (hoření)
+
+        if (loosingHP > 0) {
+            lives -= loosingHP;
+        }
     }
 
     public Backpack getBackpack() {
@@ -126,5 +154,13 @@ public class Player extends Character {
     @Override
     public String interact(Player player) {
         return "To jsem já!";
+    }
+
+    public boolean isDodging() {
+        return isDodging;
+    }
+
+    public void setDodging(boolean dodging) {
+        isDodging = dodging;
     }
 }

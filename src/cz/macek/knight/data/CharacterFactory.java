@@ -18,8 +18,8 @@ public class CharacterFactory {
                     new Enemy("Zlobr", 2, 2);
 
             // ===== STŘEDNÍ NEPŘÁTELÉ =====
-            case "enemy" ->
-                    new Enemy("Nepřítel", 2, 1);
+            case "imp" ->
+                    new Enemy("Imp", 2, 1);
 
             case "undead" ->
                     new Enemy("Nemrtvý strážce", 2, 1);

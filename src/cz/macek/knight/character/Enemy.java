@@ -1,55 +1,103 @@
 package cz.macek.knight.character;
 
 public class Enemy extends Character {
-    protected int hp;
+
     protected int damage;
-    protected boolean hasChargedAttack;
+    protected boolean charging;
 
-    public Enemy(String name, int hp, int damage) {
+    public Enemy(String name, int lives, int damage) {
         super(name);
-        this.hp = hp;
+        this.lives = lives;
         this.damage = damage;
-        this.lives = hp;
-        this.hasChargedAttack = false;
+        this.charging = false;
     }
 
-    public String attack(Player player) {
+    /**
+     * Jeden tah nepřítele
+     */
+    public String takeTurn(Player player) {
 
-        player.damage(damage);
-        return "Nepritel vas poskodil za "+ damage+ "HP";
-    }
+        if (charging) {
+            charging = false;
 
-    public String chargeAttack() {
-        hasChargedAttack = true;
-        return "Nepritel chysta silny utok ktery dalsi kolo pouzije";
-    }
+            if (player.isDodging()) {
+                player.setDodging(false);
+                return "nelze uhnout tezkemu utoku";
+            }
 
-    public String attackCharged(Player player) {
+            int dealtDamage = damage + 1;
 
-        if(hasChargedAttack){
-            player.damage(damage+1);
-            return "Nepritel vas tezce uderil za "+damage+1+ "HP";
+            if (player.isDefending()) {
+                dealtDamage -= 1;
+                if (player.hasShield()) {
+                    dealtDamage -= player.getShield().getBlockPower();
+                }
+            }
+
+            if (dealtDamage < 0) {
+                dealtDamage = 0;
+            }
+
+            damage(player, dealtDamage);
+
+            return name + " provedl silný útok a způsobil "
+                    + dealtDamage + " HP poškození!";
         }
 
-        return "CHYBA NENI CAHGENUTY ATTACK";
+        if (Math.random() < 0.3) {
+            charging = true;
+            return name + " se připravuje na silný útok!";
+        }
+
+        int dealtDamage = damage;
+
+        if (player.isDefending()) {
+            dealtDamage -= 1;
+            if (player.hasShield()) {
+                dealtDamage -= player.getShield().getBlockPower();
+            }
+        }
+
+        if (dealtDamage < 0) {
+            dealtDamage = 0;
+        }
+
+        if (player.isDodging()) {
+
+            if (player.tryDodge()) {
+                player.setDodging(false);
+                return "vyhnul si se utoku";
+
+            }
+
+            player.setDodging(false);
+            damage(player, dealtDamage);
+            return "Nepodarilo se ti uhnout " + name + " tě zasáhl za " + dealtDamage + " HP.";
+
+        }
+
+
+        damage(player, dealtDamage);
+        return name + " tě zasáhl za " + dealtDamage + " HP.";
     }
 
-    public String die() {
-        // Smrt nepřítele
-        return name + " zemřel!";
+    public void takeDamage(int damage){
+
+        lives  -= damage;
     }
 
     public boolean isAlive() {
         return lives > 0;
     }
 
-    public void loseLife() {
-        lives--;
-        hp--;
+    public void damage(Player plr, int amount) {
+
+        plr.setLives(plr.getLives() - amount);
     }
 
-    public int getHP() {
-        return hp;
+    public String die() {
+
+        return name + " byl poražen!";
     }
 
     @Override

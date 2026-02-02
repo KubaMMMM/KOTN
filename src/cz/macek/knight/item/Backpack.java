@@ -30,8 +30,9 @@ public class Backpack {
         this.items = items;
     }
 
+    //TODO: doelat batoh
+
     public void addItem(Item item) {
-        // Přidání předmětu
     }
 
     public void removeItem(Item item) {

@@ -1,11 +1,13 @@
 package cz.macek.knight.main;
 
+import cz.macek.knight.character.Dragon;
 import cz.macek.knight.character.Player;
 import cz.macek.knight.character.Enemy;
 import cz.macek.knight.command.Command;
 import cz.macek.knight.command.CommandParser;
 import cz.macek.knight.data.GameLoader;
 import cz.macek.knight.item.Shield;
+import cz.macek.knight.world.CastleRoom;
 import cz.macek.knight.world.Room;
 
 import java.util.Map;
@@ -34,25 +36,121 @@ public class Game {
         commandParser = new CommandParser();
     }
 
+    public void setCurrentEnemy(Enemy currentEnemy) {
+        this.currentEnemy = currentEnemy;
+    }
+
+
+    public String attack() {
+
+        if(currentEnemy == null){
+            return "Nemuzes s nikym bojovat";
+        }
+
+        int dmg = currentPlayer.attack(currentEnemy);
+        currentEnemy.takeDamage(dmg);
+        StringBuilder sb = new StringBuilder();
+        sb.append("Zasáhl jsi nepřítele za ").append(dmg).append(" HP.\n");
+
+        if (!currentEnemy.isAlive()) {
+            sb.append(currentEnemy.die());
+            currentRoom.removeCharacter(currentEnemy);
+            currentEnemy = null;
+            inCombat = false;
+            return sb.toString();
+        }
+
+        sb.append(currentEnemy.takeTurn(currentPlayer));
+        currentPlayer.applyLoosingHP();
+
+
+        if (currentPlayer.getLives() <= 0) {
+            inCombat = false;
+            return sb.append("\nByl jsi poražen.").toString();
+        }
+
+        return sb.toString();
+    }
+
+    public String defend() {
+
+        currentPlayer.setDefending(true);
+
+        String result = currentEnemy.takeTurn(currentPlayer);
+
+        currentPlayer.setDefending(false);
+
+        currentPlayer.applyLoosingHP();
+
+
+        if (currentPlayer.getLives() <= 0) {
+            inCombat = false;
+            return result + "\nByl jsi poražen.";
+        }
+
+        return "Bráníš se.\n" + result;
+    }
+
+    public String dodge() {
+
+        if (currentEnemy instanceof Dragon) {
+            return "Drak je příliš rychlý a mohutný – uhnout nelze!";
+        }
+
+        currentPlayer.setDodging(true);
+
+        String result = currentEnemy.takeTurn(currentPlayer);
+        currentPlayer.setDodging(false);
+
+        if (currentPlayer.getLives() <= 0) {
+            inCombat = false;
+            return result + "\nByl jsi poražen.";
+        }
+
+        return result;
+    }
+
     public String odemkni() {
 
-        Room castle = rooms.get("castle");
-
-        if (currentRoom != castle) {
+        if (!(currentRoom instanceof CastleRoom castle)) {
             return "Tady není co odemykat.";
         }
 
-        if (!currentPlayer.hasItem("klic")) {
-            return "Nemáš klíč.";
+        if (castle.getUnlocked()) {
+            return "Komnata je už odemčená.";
         }
 
+        if (!currentPlayer.hasItem("Část klíče 1")
+                || !currentPlayer.hasItem("Část klíče 2")) {
+            return "Nemáš kompletní klíč.";
+        }
+
+        castle.unlock();
+
+        currentPlayer.getBackpack().removeItem(
+                currentPlayer.getBackpack().getItem("Část klíče 1")
+        );
+        currentPlayer.getBackpack().removeItem(
+                currentPlayer.getBackpack().getItem("Část klíče 2")
+        );
+
         return "Odemkl jsi komnatu na hradě.";
+    }
+
+    public void setInCombat(boolean inCombat) {
+        this.inCombat = inCombat;
     }
 
     public String search() {
 
         if(isInCombat()){
-            return "nepritel vas prohledat okoli nenecha";
+
+            if(inCombat){
+                return "nemuzes prohledavat v boji";
+            }
+
+            inCombat = true;
+            return "vstupujete do souboje s "+getCurrentEnemy().getName();
         }
         getCurrentRoom().setExamined(true);
 
@@ -82,16 +180,9 @@ public class Game {
         return command.execute(param, this);
     }
 
-    public void print(String message) {
-        // Výpis zpráv
-    }
 
-    public void combat() {
-        // Bojový systém
-    }
-
-    public void enterCombat(Enemy enemy) {
-        // Vstup do boje
+    public void enterCombat() {
+        inCombat = true;
     }
 
     public void start() {

@@ -43,7 +43,10 @@ public class ItemFactory {
             case "potion" ->
                     new Potion(data.getName());
 
-            case "ingredient" ->
+            case "ingredient1" ->
+                    new Ingredient(data.getName(), "alchemy");
+
+            case "ingredient2" ->
                     new Ingredient(data.getName(), "alchemy");
 
             default ->

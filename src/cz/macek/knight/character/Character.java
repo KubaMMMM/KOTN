@@ -17,4 +17,12 @@ public abstract class Character {
     }
 
     public abstract String interact(Player player);
+
+    public int getLives() {
+        return lives;
+    }
+
+    public void setLives(int lives) {
+        this.lives = lives;
+    }
 }
