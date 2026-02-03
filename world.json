@@ -1,37 +1,37 @@
 {
   "items": {
     "sword": {
-      "name": "Meč",
+      "name": "mec",
       "damage": 1
     },
     "armor": {
-      "name": "Zbroj",
+      "name": "zbroj",
       "defense": 1
     },
     "shield": {
-      "name": "Štít",
+      "name": "stit",
       "blockPower": 1
     },
     "potion": {
-      "name": "Lektvar odolnosti proti ohni"
+      "name": "lektvar"
     },
     "ingredient1": {
-      "name": "Magická houba"
+      "name": "magickaHouba"
     },
     "ingredient2": {
-      "name": "Obsidiánové jablko"
+      "name": "obsidianoveJablko"
     },
     "key_part_1": {
-      "name": "Část klíče 1",
+      "name": "castKlice1",
       "partNumber": 1
     },
     "key_part_2": {
-      "name": "Část klíče 2",
+      "name": "castKlice2",
       "partNumber": 2
     },
     "items": {
       "treasure": {
-        "name": "treasure"
+        "name": "poklad"
       }
     }
   },
@@ -116,8 +116,7 @@
       "exits": {
         "west": "beach"
       },
-      "characters": ["witch"],
-      "items": ["potion"]
+      "characters": ["witch"]
     },
 
     {

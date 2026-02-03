@@ -30,24 +30,43 @@ public class Backpack {
         this.items = items;
     }
 
-    //TODO: doelat batoh
+
 
     public void addItem(Item item) {
+            items.add(item);
     }
 
-    public void removeItem(Item item) {
-        // Odebrání předmětu
-    }
 
     public Item getItem(String name) {
-        // Získání předmětu podle jména
+
+        for(Item i : items){
+
+            if(i.getName().equals(name)){
+
+                return i;
+            }
+        }
         return null;
     }
 
+    public void removeItem(Item i){
+        items.remove(i);
+    }
+
     public boolean hasItem(String name) {
-        // Kontrola jestli má předmět
+
+        for(Item i : items){
+
+            if(i.getName().equals(name)){
+
+                return true;
+            }
+        }
+
+
         return false;
     }
+
 
     public boolean isFull() {
         return items.size() >= size;

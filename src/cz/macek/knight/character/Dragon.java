@@ -11,7 +11,7 @@ public class Dragon extends Enemy {
     @Override
     public String takeTurn(Player player) {
 
-        // 🔥 1️⃣ pokud se nabíjel – ohnivý útok
+
         if (charging) {
             charging = false;
             return fireAttack(player);
@@ -19,18 +19,15 @@ public class Dragon extends Enemy {
 
         double roll = Math.random();
 
-        // 🔥 2️⃣ 30 % šance – začne nabíjet oheň
         if (roll < 0.3) {
             charging = true;
             return "Drak se zhluboka nadechuje… cítíš žár ohně!";
         }
 
-        // 🔥 3️⃣ 30 % šance – ohnivý dech (hoření)
         if (roll < 0.6) {
             return fireBreath(player);
         }
 
-        // 🐲 4️⃣ jinak běžný útok
         return clawAttack(player);
     }
 

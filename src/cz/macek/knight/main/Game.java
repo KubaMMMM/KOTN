@@ -1,5 +1,6 @@
 package cz.macek.knight.main;
 
+import cz.macek.knight.character.Ally;
 import cz.macek.knight.character.Dragon;
 import cz.macek.knight.character.Player;
 import cz.macek.knight.character.Enemy;
@@ -23,6 +24,7 @@ public class Game {
     private Enemy currentEnemy;
     private boolean konec;
     private CommandParser commandParser;
+    private Ally currentAlly;
 
     public boolean getKonec() {
         return konec;
@@ -143,19 +145,17 @@ public class Game {
 
     public String search() {
 
-        if(isInCombat()){
+        if(inCombat){
+            return "nemuzes prohledavat v boji";
+        }
 
-            if(inCombat){
-                return "nemuzes prohledavat v boji";
-            }
+        if(currentEnemy != null) {
 
             inCombat = true;
-            return "vstupujete do souboje s "+getCurrentEnemy().getName();
+            return "vstupujete do souboje s " + getCurrentEnemy().getName();
         }
+
         getCurrentRoom().setExamined(true);
-
-
-
         return "Porozhledli jste se okolo sebe a zpozorovali jste :"+ getCurrentRoom().getCharacterList().toString()+" "+getCurrentRoom().getItemsList().toString();
     }
 
@@ -199,6 +199,7 @@ public class Game {
             throw new IllegalStateException("Startovní místnost neexistuje!");
         }
 
+        currentAlly = currentRoom.
         currentPlayer = new Player("Rytíř");
         currentPlayer.setPosition(currentRoom);
     }

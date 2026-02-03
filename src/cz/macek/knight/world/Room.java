@@ -49,6 +49,7 @@ public class Room {
         return false;
     }
 
+
     public Room getRoomNorth() {
         return roomNorth;
     }

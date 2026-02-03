@@ -14,6 +14,11 @@ public class Vezmi implements Command{
         for(Item i : items){
 
             if(i.getName().equals(param)){
+
+                if(game.getCurrentPlayer().getBackpack().isFull()){
+                    return "Mate plny inventar";
+                }
+
                 game.getCurrentPlayer().getBackpack().addItem(i);
                 game.getCurrentRoom().removeItem(i);
                 return "Sebrali jste "+ i.getName()+ ".";
