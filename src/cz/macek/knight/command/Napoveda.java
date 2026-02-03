@@ -9,31 +9,31 @@ public class Napoveda implements Command {
 
         Player player = game.getCurrentPlayer();
 
-        if (!player.hasItem("Poklad")) {
+        if (!player.hasItem("poklad")) {
             return "Vydej se na východ. Na pláži u vraku lodi se nachází něco, co budeš potřebovat.";
         }
 
-        if (!player.hasItem("Zbroj")) {
+        if (!player.hasItem("zbroj")) {
             return "S nalezeným pokladem se vrať do vesnice. Kovář ti z něj může vyrobit zbroj.";
         }
 
-        if (!player.hasItem("Část klíče 1")) {
+        if (!player.hasItem("castKlice1")) {
             return "V lese se nachází nebezpečí, ale také něco důležitého. Prozkoumej ho.";
         }
 
-        if (!player.hasItem("Část klíče 2")) {
+        if (!player.hasItem("castKlice2")) {
             return "Na louce hlídá nemrtvý strážce cenný předmět. Bez něj se dál nedostaneš.";
         }
 
-        if (!player.hasItem("Štít")) {
+        if (!player.hasItem("stit")) {
             return "Spoj obě části klíče a odemkni zamčenou komnatu na hradě. Najdeš tam štít.";
         }
 
-        if (!player.hasItem("Meč")) {
+        if (!player.hasItem("mec")) {
             return "V jeskyni se skrývá silný nepřítel. Po jeho poražení získáš zbraň.";
         }
 
-        if (!player.hasItem("Lektvar odolnosti proti ohni")) {
+        if (!player.hasItem("lektvar")) {
             return "Ježibaba v chýši dokáže uvařit lektvar. Potřebuje k tomu zvláštní suroviny.";
         }
 

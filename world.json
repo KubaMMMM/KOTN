@@ -29,10 +29,8 @@
       "name": "castKlice2",
       "partNumber": 2
     },
-    "items": {
-      "treasure": {
-        "name": "poklad"
-      }
+    "treasure": {
+      "name": "poklad"
     }
   },
 

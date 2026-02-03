@@ -2,6 +2,7 @@ package cz.macek.knight.command;
 
 import cz.macek.knight.item.Item;
 import cz.macek.knight.main.Game;
+import cz.macek.knight.world.CastleRoom;
 
 import java.util.ArrayList;
 
@@ -17,6 +18,11 @@ public class Vezmi implements Command{
 
                 if(game.getCurrentPlayer().getBackpack().isFull()){
                     return "Mate plny inventar";
+                }
+
+                if (game.getCurrentRoom() instanceof CastleRoom castle
+                        && !castle.getUnlocked()) {
+                    return "Komnata je zamčená.";
                 }
 
                 game.getCurrentPlayer().getBackpack().addItem(i);

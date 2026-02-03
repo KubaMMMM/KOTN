@@ -149,10 +149,6 @@ public class Room {
         return description;
     }
 
-    public Room getExit(String direction) {
-        // Získání sousední místnosti
-        return null;
-    }
 
 
 }

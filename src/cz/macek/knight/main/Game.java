@@ -24,7 +24,6 @@ public class Game {
     private Enemy currentEnemy;
     private boolean konec;
     private CommandParser commandParser;
-    private Ally currentAlly;
 
     public boolean getKonec() {
         return konec;
@@ -199,7 +198,6 @@ public class Game {
             throw new IllegalStateException("Startovní místnost neexistuje!");
         }
 
-        currentAlly = currentRoom.
         currentPlayer = new Player("Rytíř");
         currentPlayer.setPosition(currentRoom);
     }

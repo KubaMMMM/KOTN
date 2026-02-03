@@ -1,6 +1,9 @@
 package cz.macek.knight.world;
 
 import cz.macek.knight.character.Player;
+import cz.macek.knight.item.Item;
+
+import java.util.ArrayList;
 
 
 public class CastleRoom extends Room {
@@ -10,6 +13,14 @@ public class CastleRoom extends Room {
     public CastleRoom(String description) {
         super(description);
         this.isUnlocked = false;
+    }
+
+    @Override
+    public ArrayList<Item> getItemsList() {
+        if (this instanceof CastleRoom castle && !castle.getUnlocked()) {
+            return new ArrayList<>(); // nic tam není vidět
+        }
+        return super.getItemsList();
     }
 
     public boolean canBeUnlocked(Player player) {

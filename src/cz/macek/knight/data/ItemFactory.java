@@ -16,38 +16,38 @@ public class ItemFactory {
             case "sword" ->
                     new Weapon(
                             data.getName(),
-                            1 // +1 dmg (drak má 2)
+                            data.getDamage()
                     );
 
             // ===== OBRANA =====
             case "armor" ->
                     new Armor(
                             data.getName(),
-                            1 // sníží dmg o 1
+                            data.getDefense()
                     );
 
             case "shield" ->
                     new Shield(
                             data.getName(),
-                            1 // blokuje silné útoky
+                            data.getBlockPower()
                     );
 
             // ===== KLÍČE =====
             case "key_part_1" ->
-                    new KeyPart(1);
+                    new KeyPart(data.getPartNumber());
 
             case "key_part_2" ->
-                    new KeyPart(2);
+                    new KeyPart(data.getPartNumber());
 
             // ===== ALCHYMIE =====
             case "potion" ->
                     new Potion(data.getName());
 
             case "ingredient1" ->
-                    new Ingredient(data.getName(), "alchemy");
+                    new Ingredient(data.getName());
 
             case "ingredient2" ->
-                    new Ingredient(data.getName(), "alchemy");
+                    new Ingredient(data.getName());
 
             default ->
                     throw new IllegalArgumentException(
