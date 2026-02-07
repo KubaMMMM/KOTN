@@ -34,7 +34,7 @@ public class Witch extends Ally {
 
     public void brewPotion(Player player) {
 
-        Potion p = new Potion("Lektvar");
+        Potion p = new Potion("lektvar");
 
         player.getBackpack().addItem(p);
         potionGiven = true;

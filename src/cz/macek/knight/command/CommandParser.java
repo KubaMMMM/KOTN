@@ -16,6 +16,12 @@ public class CommandParser {
         commands.put("prozkoumej", new Prozkoumej());
         commands.put("pomoc", new Pomoc());
         commands.put("konec", new Konec());
+        commands.put("mluv", new Mluvit());
+        commands.put("utok", new Utok());
+        commands.put("obrana", new Obrana());
+        commands.put("uhnout", new Uhnout());
+        commands.put("odhodit", new Odhodit());
+        commands.put("stav", new Stav());
     }
 
     public Command getCommand(String name) {

@@ -16,16 +16,16 @@ public class Jdi implements Command{
         Room nextRoom = null;
 
         switch (param) {
-            case "S":
+            case "J":
                 nextRoom = game.getCurrentRoom().getRoomSouth();
                 break;
-            case "N":
+            case "S":
                 nextRoom = game.getCurrentRoom().getRoomNorth();
                 break;
-            case "E":
+            case "V":
                 nextRoom = game.getCurrentRoom().getRoomEast();
                 break;
-            case "W":
+            case "Z":
                 nextRoom = game.getCurrentRoom().getRoomWest();
                 break;
             default:

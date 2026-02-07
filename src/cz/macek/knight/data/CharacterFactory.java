@@ -7,37 +7,37 @@ public class CharacterFactory {
 
     public static Character create(String charId) {
 
-        return switch (charId) {
+         switch (charId) {
 
-            // ===== FINÁLNÍ BOSS =====
-            case "dragon" ->
-                    new Dragon(); // (3 HP, 2 DMG)
 
-            // ===== SILNÍ NEPŘÁTELÉ =====
-            case "ogre" ->
-                    new Enemy("Zlobr", 2, 2);
+            case "dragon":
+                   return new Dragon(); // (3 HP, 2 DMG)
 
-            // ===== STŘEDNÍ NEPŘÁTELÉ =====
-            case "imp" ->
-                    new Enemy("Imp", 2, 1);
 
-            case "undead" ->
-                    new Enemy("Nemrtvý strážce", 2, 1);
+            case "ogre" :
+                    return new Enemy("Zlobr", 2, 2);
 
-            // ===== SPOJENCI =====
-            case "blacksmith" ->
-                    new Blacksmith();
 
-            case "witch" ->
-                    new Witch();
+            case "imp" :
+                    return new Enemy("Imp", 2, 1);
 
-            case "wizard" ->
-                    new Wizard();
+            case "undead" :
+                    return new Enemy("Nemrtvý strážce", 2, 1);
 
-            default ->
+
+            case "blacksmith" :
+                    return new Blacksmith();
+
+            case "witch" :
+                    return new Witch();
+
+            case "wizard" :
+                    return new Wizard();
+
+            default :
                     throw new IllegalArgumentException(
                             "Unknown character id: " + charId
                     );
-        };
+        }
     }
 }

@@ -7,7 +7,6 @@ public class GameData {
 
     private List<RoomData> rooms;
 
-    // ⬇️ NOVÉ
     private Map<String, ItemData> items;
 
 

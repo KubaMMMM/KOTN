@@ -1,6 +1,4 @@
 package cz.macek.knight.command;
-
-import cz.macek.knight.*;
 import cz.macek.knight.main.Game;
 
 public class Utok implements Command {

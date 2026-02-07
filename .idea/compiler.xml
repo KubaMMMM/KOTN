@@ -10,5 +10,8 @@
         <module name="jackson-demo" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="test" target="24" />
+    </bytecodeTargetLevel>
   </component>
 </project>

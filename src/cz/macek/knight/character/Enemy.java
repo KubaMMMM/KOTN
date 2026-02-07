@@ -7,6 +7,13 @@ public class Enemy extends Character {
     protected int damage;
     protected boolean charging;
 
+
+
+    /**
+     * Základní třída pro všechny nepřátele.
+     *
+     * Řeší chování v boji, životy a poškození hráče.
+     */
     public Enemy(String name, int lives, int damage) {
         super(name);
         this.lives = lives;
@@ -15,7 +22,10 @@ public class Enemy extends Character {
     }
 
     /**
-     * Jeden tah nepřítele
+     * Provede jeden tah nepřítele během boje.
+     *
+     * @param player hráč, proti kterému nepřítel bojuje
+     * @return textový popis akce
      */
     public String takeTurn(Player player) {
 
@@ -40,7 +50,7 @@ public class Enemy extends Character {
                 dealtDamage = 0;
             }
 
-            damage(player, dealtDamage);
+            dealDamage(player, dealtDamage);
 
             return name + " provedl silný útok a způsobil "
                     + dealtDamage + " HP poškození!";
@@ -73,16 +83,22 @@ public class Enemy extends Character {
             }
 
             player.setDodging(false);
-            damage(player, dealtDamage);
+            dealDamage(player, dealtDamage);
             return "Nepodarilo se ti uhnout " + name + " tě zasáhl za " + dealtDamage + " HP.";
 
         }
 
 
-        damage(player, dealtDamage);
+        dealDamage(player, dealtDamage);
         return name + " tě zasáhl za " + dealtDamage + " HP.";
     }
 
+
+    /**
+     * Odebere nepříteli životy.
+     *
+     * @param damage hodnota poškození
+     */
     public void takeDamage(int damage){
 
         lives  -= damage;
@@ -92,7 +108,7 @@ public class Enemy extends Character {
         return lives > 0;
     }
 
-    public void damage(Player plr, int amount) {
+    public void dealDamage(Player plr, int amount) {
 
         plr.setLives(plr.getLives() - amount);
     }

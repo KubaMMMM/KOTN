@@ -11,6 +11,14 @@ public class Potion extends Item {
         super(name);
     }
 
+
+    /**
+     * Použije lektvar na hráče.
+     *
+     * Hráč po použití získá odolnost proti ohni.
+     *
+     * @param player hráč, na kterého je lektvar použit
+     */
     public void use(Player player) {
 
         player.setFireResistance(true);

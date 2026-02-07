@@ -42,7 +42,7 @@
         "north": "castle",
         "east": "forest",
         "south": "meadow",
-        "west": "cliffs"
+        "west": "dragon_path"
       },
       "characters": ["blacksmith"]
     },
@@ -60,7 +60,8 @@
       "id": "forest",
       "description": "Temný les plný nebezpečí. Něco se hýbe mezi stromy.",
       "exits": {
-        "west": "village"
+        "west": "village",
+        "east": "beach"
       },
       "characters": ["imp"],
       "items": ["ingredient1", "key_part_1"]
@@ -70,7 +71,8 @@
       "id": "meadow",
       "description": "Otevřená louka. Cítíš chlad přicházející od nemrtvého strážce.",
       "exits": {
-        "north": "village"
+        "north": "village",
+        "east": "cave"
       },
       "characters": ["undead"],
       "items": ["ingredient2", "key_part_2"]
@@ -80,8 +82,7 @@
       "id": "cliffs",
       "description": "Vysoké útesy. Stojí zde zaklínač sledující obzor.",
       "exits": {
-        "east": "village",
-        "south": "cave"
+        "south": "dragon_path"
       },
       "characters": ["wizard"]
     },
@@ -90,8 +91,7 @@
       "id": "cave",
       "description": "Temná jeskyně. Silný zlobr blokuje cestu dál.",
       "exits": {
-        "north": "cliffs",
-        "south": "beach"
+        "west": "meadow"
       },
       "characters": ["ogre"],
       "items": ["sword"]
@@ -101,8 +101,8 @@
       "id": "beach",
       "description": "Pláž s vrakem lodi. Skřeti hlídají poklad.",
       "exits": {
-        "north": "cave",
-        "east": "hut"
+        "west": "forest"
+
       },
       "items": ["treasure"],
       "characters": ["imp", "imp"]
@@ -112,7 +112,7 @@
       "id": "hut",
       "description": "Chýše ježibaby. Vzduch je cítit magií.",
       "exits": {
-        "west": "beach"
+        "north": "dragon_path"
       },
       "characters": ["witch"]
     },
@@ -121,14 +121,19 @@
       "id": "dragon_path",
       "description": "Cesta k drakovi. Vzduch je spálený a nebezpečný.",
       "exits": {
-        "north": "village",
-        "south": "dragon_lair"
+        "east": "village",
+        "south": "hut",
+        "north": "cliffs",
+        "west": "dragon_lair"
       }
     },
 
     {
       "id": "dragon_lair",
       "description": "Doupě draka. Obrovský drak se před tebou zvedá.",
+      "exits": {
+        "east": "dragon_path"
+      },
       "characters": ["dragon"]
     }
   ]

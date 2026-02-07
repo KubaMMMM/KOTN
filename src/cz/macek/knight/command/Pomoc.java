@@ -20,6 +20,7 @@ public class Pomoc implements Command{
                         "inventar – zobrazí obsah tvého batohu\n" +
                         "napoveda – poskytne radu, co dělat dál\n" +
                         "pomoc – zobrazí tento seznam příkazů\n" +
-                        "konec – ukončí hru\n";
+                        "konec – ukončí hru\n" +
+                        "stav - zobrazi hracuv aktualni stav";
     }
 }

@@ -38,6 +38,12 @@ public class Room {
     }
 
 
+
+    /**
+     * Zjistí, zda se v místnosti nachází alespoň jeden nepřítel.
+     *
+     * @return true pokud je v místnosti nepřítel
+     */
     public boolean containsEnemy(){
 
         for(Character ch : characterList){
@@ -47,6 +53,23 @@ public class Room {
             }
         }
         return false;
+    }
+
+
+    public String vypisEntit(){
+        StringBuilder sb = new StringBuilder();
+
+        for(Character character : characterList){
+
+            sb.append(character+", ");
+        }
+
+        for (Item item : itemsList){
+
+            sb.append(item+", ");
+        }
+
+        return sb.toString();
     }
 
 

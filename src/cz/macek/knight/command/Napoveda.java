@@ -13,7 +13,7 @@ public class Napoveda implements Command {
             return "Vydej se na východ. Na pláži u vraku lodi se nachází něco, co budeš potřebovat.";
         }
 
-        if (!player.hasItem("zbroj")) {
+        if (player.getArmor() == null) {
             return "S nalezeným pokladem se vrať do vesnice. Kovář ti z něj může vyrobit zbroj.";
         }
 

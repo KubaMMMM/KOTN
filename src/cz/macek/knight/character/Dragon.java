@@ -4,8 +4,15 @@ import cz.macek.knight.main.Game;
 
 public class Dragon extends Enemy {
 
+
+    /**
+     * Speciální typ nepřítele – drak.
+     *
+     * Má unikátní schopnosti: ohnivý dech, nabíjený útok
+     * a interakci s ohnivou odolností hráče.
+     */
     public Dragon() {
-        super("Drak", 5, 2); // víc HP než ostatní
+        super("Drak", 5, 2);
     }
 
     @Override
@@ -48,7 +55,7 @@ public class Dragon extends Enemy {
 
         if (dmg < 0) dmg = 0;
 
-        damage(player, dmg);
+        dealDamage(player, dmg);
 
         return "Drak chrlí mohutný proud ohně a způsobuje "
                 + dmg + " HP poškození!";
@@ -64,7 +71,7 @@ public class Dragon extends Enemy {
 
         if (dmg < 0) dmg = 0;
 
-        damage(player, dmg);
+        dealDamage(player, dmg);
 
         return "Drak tě zasáhl svými drápy za " + dmg + " HP.";
     }
@@ -74,10 +81,10 @@ public class Dragon extends Enemy {
         int dmg = 1;
 
         if (!player.hasFireResistance()) {
-            player.setLoosingHP(1); // začne hořet
+            player.setLosingHP(1);
         }
 
-        damage(player, dmg);
+        dealDamage(player, dmg);
 
         return "Drak tě zasáhl ohnivým dechem! "
                 + "Utrpěl jsi " + dmg + " HP."

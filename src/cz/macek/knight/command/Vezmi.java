@@ -14,6 +14,10 @@ public class Vezmi implements Command{
 
         for(Item i : items){
 
+            if(game.getCurrentRoom().containsEnemy()){
+                return "v mistnositi ti nekdi nedovoli sebrat tuto vec";
+            }
+
             if(i.getName().equals(param)){
 
                 if(game.getCurrentPlayer().getBackpack().isFull()){

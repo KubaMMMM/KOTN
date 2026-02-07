@@ -53,6 +53,12 @@ public class Backpack {
         items.remove(i);
     }
 
+    /**
+     * Zjistí, zda batoh obsahuje předmět se zadaným názvem.
+     *
+     * @param name název hledaného předmětu
+     * @return true pokud se předmět nachází v batohu
+     */
     public boolean hasItem(String name) {
 
         for(Item i : items){

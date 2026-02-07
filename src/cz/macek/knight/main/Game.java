@@ -1,20 +1,21 @@
 package cz.macek.knight.main;
 
-import cz.macek.knight.character.Ally;
 import cz.macek.knight.character.Dragon;
 import cz.macek.knight.character.Player;
 import cz.macek.knight.character.Enemy;
 import cz.macek.knight.command.Command;
 import cz.macek.knight.command.CommandParser;
 import cz.macek.knight.data.GameLoader;
-import cz.macek.knight.item.Shield;
 import cz.macek.knight.world.CastleRoom;
 import cz.macek.knight.world.Room;
 
 import java.util.Map;
 
 /**
- * Hlavní třída hry Knight of the Nine
+ * Hlavní řídicí třída hry.
+ *
+ * Udržuje stav hry, aktuální místnost, boj,
+ * zpracování příkazů a interakce.
  */
 public class Game {
     private Player currentPlayer;
@@ -42,18 +43,32 @@ public class Game {
     }
 
 
+
+    /**
+     * Provede útok hráče na aktuálního nepřítele
+     * a následně tah nepřítele.
+     *
+     * @return výsledek kola boje
+     */
     public String attack() {
 
         if(currentEnemy == null){
             return "Nemuzes s nikym bojovat";
         }
 
-        int dmg = currentPlayer.attack(currentEnemy);
+        int dmg = currentPlayer.attackDamage(currentEnemy);
         currentEnemy.takeDamage(dmg);
         StringBuilder sb = new StringBuilder();
         sb.append("Zasáhl jsi nepřítele za ").append(dmg).append(" HP.\n");
 
         if (!currentEnemy.isAlive()) {
+
+            if(currentEnemy instanceof Dragon){
+                konec = true;
+                sb.append("\nPorazil jsi draka a dokončil hru!");
+            }
+
+
             sb.append(currentEnemy.die());
             currentRoom.removeCharacter(currentEnemy);
             currentEnemy = null;
@@ -73,6 +88,12 @@ public class Game {
         return sb.toString();
     }
 
+
+    /**
+     * Pokus o obranu proti útoku nepřítele.
+     *
+     * @return výsledek obrany
+     */
     public String defend() {
 
         currentPlayer.setDefending(true);
@@ -92,6 +113,15 @@ public class Game {
         return "Bráníš se.\n" + result;
     }
 
+
+
+    /**
+     * Prohledá aktuální místnost.
+     *
+     * Pokud je přítomen nepřítel, zahájí boj.
+     *
+     * @return popis výsledku průzkumu
+     */
     public String dodge() {
 
         if (currentEnemy instanceof Dragon) {
@@ -111,6 +141,16 @@ public class Game {
         return result;
     }
 
+
+    /**
+     * Pokusí se odemknout hradní komnatu.
+     *
+     * Metoda ověřuje, zda se hráč nachází v hradní místnosti
+     * a zda má obě části klíče. Při úspěchu komnatu odemkne
+     * a klíče odebere z inventáře.
+     *
+     * @return výsledek pokusu o odemknutí
+     */
     public String odemkni() {
 
         if (!(currentRoom instanceof CastleRoom castle)) {
@@ -121,18 +161,18 @@ public class Game {
             return "Komnata je už odemčená.";
         }
 
-        if (!currentPlayer.hasItem("Část klíče 1")
-                || !currentPlayer.hasItem("Část klíče 2")) {
+        if (!currentPlayer.hasItem("castKlice1")
+                || !currentPlayer.hasItem("castKlice2")) {
             return "Nemáš kompletní klíč.";
         }
 
         castle.unlock();
 
         currentPlayer.getBackpack().removeItem(
-                currentPlayer.getBackpack().getItem("Část klíče 1")
+                currentPlayer.getBackpack().getItem("castKlice1")
         );
         currentPlayer.getBackpack().removeItem(
-                currentPlayer.getBackpack().getItem("Část klíče 2")
+                currentPlayer.getBackpack().getItem("castKlice2")
         );
 
         return "Odemkl jsi komnatu na hradě.";
@@ -142,6 +182,17 @@ public class Game {
         this.inCombat = inCombat;
     }
 
+
+
+    /**
+     * Prohledá aktuální místnost.
+     *
+     * Pokud hráč není v boji a v místnosti se nachází nepřítel,
+     * zahájí se boj. V opačném případě metoda vypíše seznam
+     * postav a předmětů v místnosti a označí ji jako prozkoumanou.
+     *
+     * @return textový popis výsledku prohledání nebo zahájení boje
+     */
     public String search() {
 
         if(inCombat){
@@ -155,7 +206,7 @@ public class Game {
         }
 
         getCurrentRoom().setExamined(true);
-        return "Porozhledli jste se okolo sebe a zpozorovali jste :"+ getCurrentRoom().getCharacterList().toString()+" "+getCurrentRoom().getItemsList().toString();
+        return "Porozhledli jste se okolo sebe a zpozorovali jste : "+ getCurrentRoom().vypisEntit();
     }
 
     public boolean isOgreDefeated() {

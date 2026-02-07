@@ -6,53 +6,55 @@ public class ItemFactory {
 
     public static Item create(String itemId, ItemData data) {
 
-        return switch (itemId) {
+        switch (itemId) {
 
 
-            case "treasure" ->
-                    new Treasure();
+            case "treasure" :
+            {
+                return new Treasure();
+            }
 
-            // ===== ZBRANĚ =====
-            case "sword" ->
-                    new Weapon(
+
+            case "sword" :
+                    return new Weapon(
                             data.getName(),
                             data.getDamage()
                     );
 
-            // ===== OBRANA =====
-            case "armor" ->
-                    new Armor(
+
+            case "armor" :
+                    return new Armor(
                             data.getName(),
                             data.getDefense()
                     );
 
-            case "shield" ->
-                    new Shield(
+            case "shield" :
+                    return new Shield(
                             data.getName(),
                             data.getBlockPower()
                     );
 
-            // ===== KLÍČE =====
-            case "key_part_1" ->
-                    new KeyPart(data.getPartNumber());
 
-            case "key_part_2" ->
-                    new KeyPart(data.getPartNumber());
+            case "key_part_1" :
+                    return new KeyPart(data.getPartNumber());
 
-            // ===== ALCHYMIE =====
-            case "potion" ->
-                    new Potion(data.getName());
+            case "key_part_2" :
+                    return new KeyPart(data.getPartNumber());
 
-            case "ingredient1" ->
-                    new Ingredient(data.getName());
 
-            case "ingredient2" ->
-                    new Ingredient(data.getName());
+            case "potion" :
+                    return new Potion(data.getName());
 
-            default ->
+            case "ingredient1" :
+                    return new Ingredient(data.getName());
+
+            case "ingredient2" :
+                    return new Ingredient(data.getName());
+
+            default :
                     throw new IllegalArgumentException(
                             "Unknown item id: " + itemId
                     );
-        };
+        }
     }
 }

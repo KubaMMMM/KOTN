@@ -7,9 +7,13 @@ import cz.macek.knight.item.Shield;
 import cz.macek.knight.main.Game;
 import cz.macek.knight.world.Room;
 
-import java.util.Random;
 
-
+/**
+ * Reprezentuje hráče ve hře.
+ *
+ * Hráč má inventář, výstroj, životy a stavové efekty
+ * (obrana, uhýbání, hoření, znalost slabiny draka).
+ */
 public class Player extends Character {
     private Room position;
     private Backpack backpack;
@@ -19,14 +23,14 @@ public class Player extends Character {
     private boolean hasFireResistance;
     private boolean knowsWeakness;
     private boolean isDefending;
-    private int loosingHP;
+    private int losingHP;
     private boolean isDodging = false;
 
     public Player(String name) {
         super(name);
         this.lives = 3;
         this.backpack = new Backpack();
-        this.loosingHP = 0;
+        this.losingHP = 0;
         this.isDefending = false;
     }
 
@@ -50,7 +54,16 @@ public class Player extends Character {
     }
 
 
-    public int attack(Enemy e) {
+    /**
+     * Spočítá poškození způsobené hráčem nepříteli.
+     *
+     * Metoda pouze vypočítá hodnotu poškození,
+     * samotné odečtení životů provádí třída Game.
+     *
+     * @param e nepřítel, na kterého hráč útočí
+     * @return hodnota poškození
+     */
+    public int attackDamage(Enemy e) {
 
         int damage = 1; // základní útok
 
@@ -68,14 +81,20 @@ public class Player extends Character {
 
 
 
+
+
     public void loseLife() {
         lives--;
     }
 
+    /**
+     * Aplikuje průběžné poškození (např. hoření).
+     * Volá se po každém tahu nepřítele.
+     */
     public void applyLoosingHP() {
 
-        if (loosingHP > 0) {
-            lives -= loosingHP;
+        if (losingHP > 0) {
+            lives -= losingHP;
         }
     }
 
@@ -91,6 +110,8 @@ public class Player extends Character {
 
         return backpack.hasItem(itemName);
     }
+
+
 
     public Armor getArmor() {
         return armor;
@@ -152,12 +173,12 @@ public class Player extends Character {
         return knowsWeakness;
     }
 
-    public void setLoosingHP(int value) {
-        this.loosingHP = value;
+    public void setLosingHP(int value) {
+        this.losingHP = value;
     }
 
-    public int getLoosingHP() {
-        return loosingHP;
+    public int getLosingHP() {
+        return losingHP;
     }
 
     @Override

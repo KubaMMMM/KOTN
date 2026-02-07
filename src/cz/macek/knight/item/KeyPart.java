@@ -4,7 +4,7 @@ public class KeyPart extends Item {
     private int partNumber;
 
     public KeyPart(int partNumber) {
-        super("Část klíče " + partNumber);
+        super("castKlice" + partNumber);
         this.partNumber = partNumber;
     }
 

@@ -3,6 +3,12 @@ package cz.macek.knight.character;
 import cz.macek.knight.data.GameLoader;
 import cz.macek.knight.main.Game;
 
+
+/**
+ * Abstraktní třída pro přátelské postavy.
+ *
+ * Spojenci mohou zadávat úkoly nebo pomáhat hráči.
+ */
 public abstract class Ally extends Character {
 
     private boolean questCompleted = false;
