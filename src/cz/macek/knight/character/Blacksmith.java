@@ -6,7 +6,7 @@ import cz.macek.knight.main.Game;
 public class Blacksmith extends Ally {
 
     public Blacksmith() {
-        super("kovář");
+        super("kovar");
     }
 
     @Override

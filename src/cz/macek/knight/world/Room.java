@@ -59,14 +59,28 @@ public class Room {
     public String vypisEntit(){
         StringBuilder sb = new StringBuilder();
 
-        for(Character character : characterList){
+        for(int i = 0; i < characterList.size(); i++){
 
-            sb.append(character+", ");
+            if(i == characterList.size()-1){
+                sb.append(characterList.get(i)+" ");
+
+            }else {
+                sb.append(characterList.get(i) + ", ");
+            }
         }
 
-        for (Item item : itemsList){
+        for (int i = 0; i < itemsList.size(); i++){
 
-            sb.append(item+", ");
+            if(i == itemsList.size()-1) {
+                sb.append(itemsList.get(i) + " ");
+            }else{
+                sb.append(itemsList.get(i)+", ");
+            }
+
+        }
+
+        if(sb.isEmpty()){
+            return "nic";
         }
 
         return sb.toString();

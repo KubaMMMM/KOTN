@@ -22,6 +22,8 @@ public class CommandParser {
         commands.put("uhnout", new Uhnout());
         commands.put("odhodit", new Odhodit());
         commands.put("stav", new Stav());
+        commands.put("napoveda", new Napoveda());
+        commands.put("mapa", new Mapa());
     }
 
     public Command getCommand(String name) {

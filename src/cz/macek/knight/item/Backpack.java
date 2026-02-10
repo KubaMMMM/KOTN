@@ -73,7 +73,22 @@ public class Backpack {
         return false;
     }
 
+    public String toString() {
 
+        StringBuilder sb = new StringBuilder();
+
+        for (int i = 0; i < items.size(); i++) {
+
+            if (i == items.size() - 1) {
+                sb.append(items.get(i) + " ");
+            } else {
+                sb.append(items.get(i) + ", ");
+            }
+
+        }
+
+        return sb.toString();
+    }
     public boolean isFull() {
         return items.size() >= size;
     }

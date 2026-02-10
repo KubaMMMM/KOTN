@@ -125,7 +125,8 @@
         "south": "hut",
         "north": "cliffs",
         "west": "dragon_lair"
-      }
+      },
+      "characters": ["guard"]
     },
 
     {

@@ -21,6 +21,7 @@ public class Pomoc implements Command{
                         "napoveda – poskytne radu, co dělat dál\n" +
                         "pomoc – zobrazí tento seznam příkazů\n" +
                         "konec – ukončí hru\n" +
-                        "stav - zobrazi hracuv aktualni stav";
+                        "stav - zobrazi hracuv aktualni stav\n"+
+                        "mapa - zobrazi mapu hry\n";
     }
 }

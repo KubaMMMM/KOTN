@@ -23,5 +23,9 @@ class Main {
         System.out.println("Konec hry.");
 
 
+
+        //TODO: udelat uzdraveni hrace?
+        //TODO: opravit uhybani a obranu pri vstupu?
+        //TODO: udelat UI
     }
 }

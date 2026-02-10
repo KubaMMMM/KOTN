@@ -15,14 +15,14 @@ public class CharacterFactory {
 
 
             case "ogre" :
-                    return new Enemy("Zlobr", 2, 2);
+                    return new Enemy("zlobr", 2, 2);
 
 
             case "imp" :
-                    return new Enemy("Imp", 2, 1);
+                    return new Enemy("imp", 2, 1);
 
             case "undead" :
-                    return new Enemy("Nemrtvý strážce", 2, 1);
+                    return new Enemy("nemrtvyStrazce", 2, 1);
 
 
             case "blacksmith" :
@@ -33,6 +33,9 @@ public class CharacterFactory {
 
             case "wizard" :
                     return new Wizard();
+
+            case "guard":
+                    return new Guard("straznik");
 
             default :
                     throw new IllegalArgumentException(

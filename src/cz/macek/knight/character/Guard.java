@@ -13,6 +13,6 @@ public class Guard extends Ally{
     @Override
     public String interact(Player player, Game game) {
 
-        return "N vychod odsud je drak. Jit na nej bez pripravy je sebevrazda";
+        return "Na vychod odsud je drak. Jit na nej bez pripravy je sebevrazda";
     }
 }

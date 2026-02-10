@@ -6,7 +6,7 @@ import cz.macek.knight.world.Room;
 public class Wizard extends Ally {
 
     public Wizard() {
-        super("Zaklínač");
+        super("zaklinac");
     }
 
     @Override

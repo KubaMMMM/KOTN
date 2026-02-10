@@ -11,14 +11,14 @@ public class Inventar implements Command{
 
         String vypis = "Obsah vaseho batohu: " + "\n";
 
-        vypis += player.getBackpack().getItems().toString();
+        vypis += player.getBackpack().toString();
 
         if(player.getBackpack().isFull()){
             vypis += "\n"+"vas batoh je plny";
         }else {
-            vypis += "\n"+"v batohu mate jeste";
+            vypis += "\n"+"v batohu mate jeste ";
             vypis += player.getBackpack().getSize()-player.getBackpack().getItems().size();
-            vypis += "mist";
+            vypis += " mist";
         }
 
         return vypis;

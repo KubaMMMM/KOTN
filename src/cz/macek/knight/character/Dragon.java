@@ -12,7 +12,7 @@ public class Dragon extends Enemy {
      * a interakci s ohnivou odolností hráče.
      */
     public Dragon() {
-        super("Drak", 5, 2);
+        super("drak", 5, 2);
     }
 
     @Override

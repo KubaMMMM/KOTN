@@ -8,7 +8,7 @@ public class Witch extends Ally {
     private boolean potionGiven;
 
     public Witch() {
-        super("Ježibaba");
+        super("jezibaba");
         this.potionGiven = false;
     }
 

@@ -73,6 +73,7 @@ public class Game {
             currentRoom.removeCharacter(currentEnemy);
             currentEnemy = null;
             inCombat = false;
+            currentPlayer.setLives(currentPlayer.getLives() +2);
             return sb.toString();
         }
 
