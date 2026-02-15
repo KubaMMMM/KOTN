@@ -93,9 +93,15 @@ public class Player extends Character {
      */
     public void applyLoosingHP() {
 
+        if (lives < 0) {
+            lives = 0;
+        }
+
         if (losingHP > 0) {
             lives -= losingHP;
         }
+
+
     }
 
     public Backpack getBackpack() {

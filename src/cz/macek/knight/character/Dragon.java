@@ -86,11 +86,7 @@ public class Dragon extends Enemy {
 
         dealDamage(player, dmg);
 
-        return "Drak tě zasáhl ohnivým dechem! "
-                + "Utrpěl jsi " + dmg + " HP."
-                + (player.hasFireResistance()
-                ? ""
-                : " Začínáš hořet!");
+        return "Drak tě zasáhl ohnivým dechem! " + "Utrpěl jsi " + dmg + " HP." + (player.hasFireResistance() ? "" : " Začínáš hořet!");
     }
 
 

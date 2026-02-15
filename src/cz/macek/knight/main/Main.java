@@ -6,12 +6,13 @@ class Main {
     public static void main(String[] args){
 
 
+
         Game game = new Game();
-        game.start();
+        System.out.println(game.start());
 
         Scanner sc = new Scanner(System.in);
 
-        System.out.println("Hra spuštěna. Napiš 'pomoc'.");
+
 
         while (!game.getKonec()) {
             System.out.print("> ");
@@ -27,5 +28,7 @@ class Main {
         //TODO: udelat uzdraveni hrace?
         //TODO: opravit uhybani a obranu pri vstupu?
         //TODO: udelat UI
+        //TODO: udelat chyby v rsc a dodelat rsc
+        //TODO: readme
     }
 }

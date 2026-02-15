@@ -53,7 +53,7 @@ public class ItemFactory {
 
             default :
                     throw new IllegalArgumentException(
-                            "Unknown item id: " + itemId
+                            "Neznamy item ID: " + itemId
                     );
         }
     }

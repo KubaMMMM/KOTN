@@ -102,7 +102,6 @@
       "description": "Pláž s vrakem lodi. Skřeti hlídají poklad.",
       "exits": {
         "west": "forest"
-
       },
       "items": ["treasure"],
       "characters": ["imp", "imp"]

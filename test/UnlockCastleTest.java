@@ -20,7 +20,7 @@ class UnlockCastleTest {
 
         game.odemkni();
 
-        assertFalse(game.getCurrentPlayer().hasItem("Část klíče 1"));
-        assertFalse(game.getCurrentPlayer().hasItem("Část klíče 2"));
+        assertFalse(game.getCurrentPlayer().hasItem("castKlice1"));
+        assertFalse(game.getCurrentPlayer().hasItem("castKlice2"));
     }
 }

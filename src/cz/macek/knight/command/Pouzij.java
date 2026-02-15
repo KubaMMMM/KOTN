@@ -14,7 +14,7 @@ public class Pouzij implements Command{
 
         for(Item i : inv){
 
-            if(i.getName().equals("lektvar")){
+            if(i.getName().equals(param)){
 
                 Potion lektvar = (Potion) i;
 

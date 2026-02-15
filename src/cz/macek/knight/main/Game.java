@@ -9,6 +9,7 @@ import cz.macek.knight.data.GameLoader;
 import cz.macek.knight.world.CastleRoom;
 import cz.macek.knight.world.Room;
 
+import java.util.HashMap;
 import java.util.Map;
 
 /**
@@ -241,17 +242,25 @@ public class Game {
         inCombat = true;
     }
 
-    public void start() {
+    public String start() {
 
-        rooms = GameLoader.loadRooms("world.json");
-
+        try {
+            rooms = GameLoader.loadRooms("world.json");
+        } catch (Exception e) {
+            rooms = new HashMap<>();
+            konec = true;
+            return "Nepodařilo se načíst herní svět. -> " + e.getMessage();
+        }
         currentRoom = rooms.get("village");
+
         if (currentRoom == null) {
-            throw new IllegalStateException("Startovní místnost neexistuje!");
+            konec = true;
+            return "Startovní místnost neexistuje!";
         }
 
         currentPlayer = new Player("Rytíř");
         currentPlayer.setPosition(currentRoom);
+        return "Hra spuštěna. Napiš 'pomoc'.";
     }
 
     // Gettery a settery

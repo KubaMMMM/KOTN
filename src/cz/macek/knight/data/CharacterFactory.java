@@ -39,7 +39,7 @@ public class CharacterFactory {
 
             default :
                     throw new IllegalArgumentException(
-                            "Unknown character id: " + charId
+                            "Neznamy charakter ID: " + charId
                     );
         }
     }
