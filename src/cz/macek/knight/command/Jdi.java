@@ -6,11 +6,12 @@ import cz.macek.knight.world.Room;
 public class Jdi implements Command{
 
 
+
     @Override
     public String execute(String param, Game game) {
 
-        if(game.isInCombat()){
-            return "nepritel vas nenecha odejit";
+        if (game.isInCombat()) {
+            return "Nepřítel vás nenechá odejít.";
         }
 
         Room nextRoom = null;
@@ -42,10 +43,14 @@ public class Jdi implements Command{
 
         if (nextRoom.containsEnemy()) {
             game.setCurrentEnemy(nextRoom.getEnemies().get(0));
-        } else {
-            game.setCurrentEnemy(null);
+            game.setInCombat(true);
+            return "Vstupujete do souboje s "
+                    + game.getCurrentEnemy().getName();
         }
 
-        return "Nacházíš se v místnosti: " + nextRoom.getDescription();
+        game.setCurrentEnemy(null);
+
+        return "Nacházíš se v místnosti: "
+                + nextRoom.getDescription();
     }
 }

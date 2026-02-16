@@ -19,7 +19,7 @@ HERNÍ SVĚT
 Hra obsahuje více propojených lokací. Hráč se mezi nimi pohybuje pomocí světových stran. Některé lokace obsahují nepřátele nebo důležité prvky příběhu. Herní svět je načítán z souboru world.json.
 
 SOUBOJ
-Souboj je tahový a zahajuje se příkazem "prozkoumej" v lokaci s nepřítelem. Hráč může útočit, bránit se nebo se pokusit uhnout. Nepřátelé mají vlastní chování a silnější protivníci vyžadují lepší přípravu.
+Souboj je tahový. Hráč může útočit, bránit se nebo se pokusit uhnout. Nepřátelé mají vlastní chování a silnější protivníci vyžadují lepší přípravu.
 
 INVENTÁŘ
 Hráč má omezenou kapacitu inventáře, což ho nutí rozhodovat, které předměty si ponechá. Některé předměty jsou klíčové pro postup hrou.

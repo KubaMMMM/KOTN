@@ -33,9 +33,9 @@ public class Backpack {
 
 
     public void addItem(Item item) {
-            items.add(item);
+        if (isFull()) return;
+        items.add(item);
     }
-
 
     public Item getItem(String name) {
 

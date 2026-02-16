@@ -23,10 +23,6 @@ public class CastleRoom extends Room {
         return super.getItemsList();
     }
 
-    public boolean canBeUnlocked(Player player) {
-        return player.hasItem("Část klíče 1")
-                && player.hasItem("Část klíče 2");
-    }
 
     public void unlock() {
         this.isUnlocked = true;

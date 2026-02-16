@@ -79,7 +79,7 @@ public class Room {
 
         }
 
-        if(sb.isEmpty()){
+        if(sb.length() == 0){
             return "nic";
         }
 

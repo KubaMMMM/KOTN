@@ -25,10 +25,8 @@ class Main {
 
 
 
-        //TODO: udelat uzdraveni hrace?
-        //TODO: opravit uhybani a obranu pri vstupu?
+
         //TODO: udelat UI
         //TODO: udelat chyby v rsc a dodelat rsc
-        //TODO: readme
     }
 }

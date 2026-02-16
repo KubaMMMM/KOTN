@@ -6,6 +6,7 @@ public class Enemy extends Character {
 
     protected int damage;
     protected boolean charging;
+    protected  int maxLives;
 
 
 
@@ -17,8 +18,17 @@ public class Enemy extends Character {
     public Enemy(String name, int lives, int damage) {
         super(name);
         this.lives = lives;
+        this.maxLives = lives;
         this.damage = damage;
         this.charging = false;
+    }
+
+    public int getMaxLives() {
+        return maxLives;
+    }
+
+    public void setMaxLives(int maxLives) {
+        this.maxLives = maxLives;
     }
 
     /**
@@ -29,12 +39,22 @@ public class Enemy extends Character {
      */
     public String takeTurn(Player player) {
 
+
         if (charging) {
             charging = false;
 
             if (player.isDodging()) {
+
+                if (player.tryDodge()) {
+                    player.setDodging(false);
+                    return "vyhnul si se utoku";
+
+                }
+
                 player.setDodging(false);
-                return "nelze uhnout tezkemu utoku";
+                dealDamage(player, damage + 1);
+                return "Nepodarilo se ti uhnout " + name + " tě zasáhl za " + (damage +1)  + " HP.";
+
             }
 
             int dealtDamage = damage + 1;
@@ -114,7 +134,6 @@ public class Enemy extends Character {
     }
 
     public String die() {
-
         return name + " byl poražen!";
     }
 

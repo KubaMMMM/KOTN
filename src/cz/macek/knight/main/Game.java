@@ -64,17 +64,29 @@ public class Game {
 
         if (!currentEnemy.isAlive()) {
 
-            if(currentEnemy instanceof Dragon){
+            if (currentEnemy instanceof Dragon) {
                 konec = true;
                 sb.append("\nPorazil jsi draka a dokončil hru!");
             }
 
-
             sb.append(currentEnemy.die());
             currentRoom.removeCharacter(currentEnemy);
-            currentEnemy = null;
-            inCombat = false;
-            currentPlayer.setLives(currentPlayer.getLives() +2);
+
+            // Zkontroluj další nepřátele
+            if (currentRoom.containsEnemy()) {
+
+                currentEnemy = currentRoom.getEnemies().get(0);
+                sb.append("\nDo boje vstupuje další nepřítel: ")
+                        .append(currentEnemy.getName());
+
+            } else {
+
+                currentPlayer.setLives(currentPlayer.getLives() + getCurrentEnemy().getMaxLives());
+
+                currentEnemy = null;
+                inCombat = false;
+            }
+
             return sb.toString();
         }
 
@@ -84,6 +96,7 @@ public class Game {
 
         if (currentPlayer.getLives() <= 0) {
             inCombat = false;
+            konec = true;
             return sb.append("\nByl jsi poražen.").toString();
         }
 
@@ -109,6 +122,8 @@ public class Game {
 
         if (currentPlayer.getLives() <= 0) {
             inCombat = false;
+            konec = true;
+
             return result + "\nByl jsi poražen.";
         }
 
@@ -126,9 +141,6 @@ public class Game {
      */
     public String dodge() {
 
-        if (currentEnemy instanceof Dragon) {
-            return "Drak je příliš rychlý a mohutný – uhnout nelze!";
-        }
 
         currentPlayer.setDodging(true);
 
@@ -137,6 +149,8 @@ public class Game {
 
         if (currentPlayer.getLives() <= 0) {
             inCombat = false;
+            konec = true;
+
             return result + "\nByl jsi poražen.";
         }
 
@@ -199,12 +213,6 @@ public class Game {
 
         if(inCombat){
             return "nemuzes prohledavat v boji";
-        }
-
-        if(currentEnemy != null) {
-
-            inCombat = true;
-            return "vstupujete do souboje s " + getCurrentEnemy().getName();
         }
 
         getCurrentRoom().setExamined(true);

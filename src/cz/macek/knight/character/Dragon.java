@@ -18,10 +18,9 @@ public class Dragon extends Enemy {
     @Override
     public String takeTurn(Player player) {
 
-
         if (charging) {
             charging = false;
-            return fireAttack(player);
+            return strongAttack(player);
         }
 
         double roll = Math.random();
@@ -38,12 +37,57 @@ public class Dragon extends Enemy {
         return clawAttack(player);
     }
 
-    public String fireAttack(Player player) {
+    private String strongAttack(Player player) {
 
         int dmg = 3;
 
-        if (player.hasFireResistance()) {
+        player.setDodging(false);
+
+        if (player.isDefending()) {
             dmg -= 1;
+            if (player.hasShield()) {
+                dmg -= player.getShield().getBlockPower();
+            }
+        }
+
+        if (dmg < 0) dmg = 0;
+
+        dealDamage(player, dmg);
+
+        return "Drak chrlí mohutný ohnivý výboj za "
+                + dmg + " HP!";
+    }
+
+
+    private String clawAttack(Player player) {
+
+        int dmg = damage; // 2
+
+        player.setDodging(false);
+
+        if (player.isDefending()) {
+            dmg -= 1;
+            if (player.hasShield()) {
+                dmg -= player.getShield().getBlockPower();
+            }
+        }
+
+        if (dmg < 0) dmg = 0;
+
+        dealDamage(player, dmg);
+
+        return "Drak tě zasáhl svými drápy za "
+                + dmg + " HP.";
+    }
+
+    private String fireBreath(Player player) {
+
+        int dmg = 1;
+
+        player.setDodging(false);
+
+        if (!player.hasFireResistance()) {
+            player.setLosingHP(1);
         }
 
         if (player.isDefending()) {
@@ -57,36 +101,9 @@ public class Dragon extends Enemy {
 
         dealDamage(player, dmg);
 
-        return "Drak chrlí mohutný proud ohně a způsobuje "
-                + dmg + " HP poškození!";
-    }
-
-    public String clawAttack(Player player) {
-
-        int dmg = damage;
-
-        if (player.isDefending()) {
-            dmg -= 1;
-        }
-
-        if (dmg < 0) dmg = 0;
-
-        dealDamage(player, dmg);
-
-        return "Drak tě zasáhl svými drápy za " + dmg + " HP.";
-    }
-
-    public String fireBreath(Player player) {
-
-        int dmg = 1;
-
-        if (!player.hasFireResistance()) {
-            player.setLosingHP(1);
-        }
-
-        dealDamage(player, dmg);
-
-        return "Drak tě zasáhl ohnivým dechem! " + "Utrpěl jsi " + dmg + " HP." + (player.hasFireResistance() ? "" : " Začínáš hořet!");
+        return "Drak tě zasáhl ohnivým dechem! Utrpěl jsi "
+                + dmg + " HP."
+                + (player.hasFireResistance() ? "" : " Začínáš hořet!");
     }
 
 

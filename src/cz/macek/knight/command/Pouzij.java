@@ -14,11 +14,13 @@ public class Pouzij implements Command{
 
         for(Item i : inv){
 
-            if(i.getName().equals(param)){
+            if(i.getName().equals(param) && i instanceof Potion){
 
                 Potion lektvar = (Potion) i;
 
                 lektvar.use(game.getCurrentPlayer());
+                game.getCurrentPlayer().getBackpack().removeItem(i);
+
                 return "Vypil jste lektvar a po pocatecnim paleni v krku se citite plny sily, jak kdyby vam srdce horelo.";
             }
         }

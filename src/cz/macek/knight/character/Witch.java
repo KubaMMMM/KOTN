@@ -1,5 +1,6 @@
 package cz.macek.knight.character;
 
+import cz.macek.knight.item.Ingredient;
 import cz.macek.knight.item.Potion;
 import cz.macek.knight.main.Game;
 
@@ -38,6 +39,8 @@ public class Witch extends Ally {
 
         player.getBackpack().addItem(p);
         potionGiven = true;
+        player.getBackpack().removeItem(player.getBackpack().getItem("magickaHouba"));
+        player.getBackpack().removeItem(player.getBackpack().getItem("obsidianoveJablko"));
 
     }
 }
