@@ -16,6 +16,9 @@ public class Room {
     private ArrayList<Item> itemsList;
     private ArrayList<Character> characterList;
     private boolean examined;
+    private String clearedDescription;
+
+
 
     public Room(String description) {
         this.description = description;
@@ -23,6 +26,26 @@ public class Room {
         this.characterList = new ArrayList<>();
         this.examined = false;
     }
+
+    public void setClearedDescription(String clearedDescription) {
+        this.clearedDescription = clearedDescription;
+    }
+
+    public String getDescription() {
+
+        if (!containsEnemy() && clearedDescription != null) {
+            return clearedDescription;
+        }
+
+        if (this instanceof CastleRoom castle) {
+            if (!castle.getUnlocked()) {
+                return clearedDescription;
+            }
+        }
+
+        return description;
+    }
+
 
     public ArrayList<Enemy> getEnemies(){
 
@@ -182,9 +205,6 @@ public class Room {
         return null;
     }
 
-    public String getDescription() {
-        return description;
-    }
 
 
 

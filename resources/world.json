@@ -50,6 +50,7 @@
     {
       "id": "castle",
       "description": "Stojíš před zamčenou komnatou na hradě.",
+      "clearedDescription": "Komnata je otevřená. Uvnitř nacházíš starý štít, stále pevný a připravený k boji.",
       "exits": {
         "south": "village"
       },
@@ -59,6 +60,7 @@
     {
       "id": "forest",
       "description": "Temný les plný nebezpečí. Něco se hýbe mezi stromy.",
+      "clearedDescription": "Les je nyní tichý. Mezi stromy už nic nečíhá a vzduch je klidnější než před chvílí.",
       "exits": {
         "west": "village",
         "east": "beach"
@@ -70,6 +72,8 @@
     {
       "id": "meadow",
       "description": "Otevřená louka. Cítíš chlad přicházející od nemrtvého strážce.",
+      "clearedDescription": "Nemrtvý strážce byl poražen. Louka působí klidněji, chlad ustoupil a tráva se tiše vlní ve větru.",
+
       "exits": {
         "north": "village",
         "east": "cave"
@@ -90,6 +94,8 @@
     {
       "id": "cave",
       "description": "Temná jeskyně. Silný zlobr blokuje cestu dál.",
+      "clearedDescription": "Zlobr leží poražen u stěny jeskyně. Cesta dál je volná a ticho je téměř znepokojivé.",
+
       "exits": {
         "west": "meadow"
       },
@@ -100,6 +106,8 @@
     {
       "id": "beach",
       "description": "Pláž s vrakem lodi. Skřeti hlídají poklad.",
+      "clearedDescription": "Pláž je prázdná. U vraku lodi už nikdo nestřeží poklad a moře tiše omývá břeh.",
+
       "exits": {
         "west": "forest"
       },
@@ -131,6 +139,8 @@
     {
       "id": "dragon_lair",
       "description": "Doupě draka. Obrovský drak se před tebou zvedá.",
+      "clearedDescription": "Drak je mrtev. V jeho doupěti zůstává jen doutnající popel a ozvěna posledního souboje.",
+
       "exits": {
         "east": "dragon_path"
       },

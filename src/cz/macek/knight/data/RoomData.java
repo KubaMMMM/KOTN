@@ -8,9 +8,19 @@ public class RoomData {
     private String id;
     private String description;
     private Map<String, String> exits;
+    private String clearedDescription;
 
     private List<String> items;
     private List<String> characters;
+
+
+    public String getClearedDescription() {
+        return clearedDescription;
+    }
+
+    public void setClearedDescription(String clearedDescription) {
+        this.clearedDescription = clearedDescription;
+    }
 
     public void setId(String id) {
         this.id = id;

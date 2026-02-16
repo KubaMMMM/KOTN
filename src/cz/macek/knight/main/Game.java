@@ -66,7 +66,7 @@ public class Game {
 
             if (currentEnemy instanceof Dragon) {
                 konec = true;
-                sb.append("\nPorazil jsi draka a dokončil hru!");
+                sb.append("\nPorazil jsi draka a dokončil hru! ");
             }
 
             sb.append(currentEnemy.die());
@@ -268,7 +268,24 @@ public class Game {
 
         currentPlayer = new Player("Rytíř");
         currentPlayer.setPosition(currentRoom);
-        return "Hra spuštěna. Napiš 'pomoc'.";
+        return """
+====================================================
+           KNIGHT OF THE NINE
+====================================================
+
+Království žije ve stínu draka.
+Na obzoru se vznáší temná silueta a vzduch je cítit popelem.
+
+Jsi rytíř, poslední naděje této země.
+
+Tvůj úkol je jasný:
+Najít výstroj, odhalit drakovu slabinu
+a postavit se mu v jeho doupěti.
+
+Začínáš ve vesnici.
+
+Napiš 'pomoc' pro seznam příkazů.
+""";
     }
 
     // Gettery a settery

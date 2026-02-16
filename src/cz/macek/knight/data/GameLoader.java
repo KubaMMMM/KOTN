@@ -41,8 +41,12 @@ public class GameLoader {
 
             if ("castle".equals(rd.getId())) {
                 room = new CastleRoom(rd.getDescription());
+                room.setClearedDescription(rd.getClearedDescription());
+
             } else {
                 room = new Room(rd.getDescription());
+                room.setClearedDescription(rd.getClearedDescription());
+
             }
 
             if (rd.getItems() != null) {

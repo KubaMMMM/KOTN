@@ -27,13 +27,23 @@ public class Witch extends Ally {
             return "Nemas potrebne ingredience pro vyrobu lektvaru";
         }
 
-        brewPotion(player);
+        boolean  vareni = brewPotion(player);
+
+
+        if(!vareni){
+            return "Tvuj batoh je plny";
+        }
 
         return "Jezibaba ti uvarila lektvar odolnosti proti ohni";
 
     }
 
-    public void brewPotion(Player player) {
+    public boolean brewPotion(Player player) {
+
+        if (player.getBackpack().isFull()) {
+            return false;
+        }
+
 
         Potion p = new Potion("lektvar");
 
@@ -41,6 +51,7 @@ public class Witch extends Ally {
         potionGiven = true;
         player.getBackpack().removeItem(player.getBackpack().getItem("magickaHouba"));
         player.getBackpack().removeItem(player.getBackpack().getItem("obsidianoveJablko"));
+        return true;
 
     }
 }
