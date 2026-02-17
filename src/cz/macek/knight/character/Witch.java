@@ -19,19 +19,19 @@ public class Witch extends Ally {
 
         if(potionGiven){
 
-            return "Lektvar uz mas, tak si jdi po svych";
+            return "Jezibaba: Lektvar uz mas, tak si jdi po svych";
         }
 
         if(!player.getBackpack().hasItem("magickaHouba") || !player.getBackpack().hasItem("obsidianoveJablko")){
 
-            return "Nemas potrebne ingredience pro vyrobu lektvaru";
+            return "Jezibaba: Prines mi dve vzacne ingredience z louky a lesu a ja ti z nich uvarim lektvar proti ohni.";
         }
 
         boolean  vareni = brewPotion(player);
 
 
         if(!vareni){
-            return "Tvuj batoh je plny";
+            return "Tvuj batoh je plny, nemas kam dat uvarny lektvar.";
         }
 
         return "Jezibaba ti uvarila lektvar odolnosti proti ohni";

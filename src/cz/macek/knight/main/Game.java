@@ -76,12 +76,13 @@ public class Game {
             if (currentRoom.containsEnemy()) {
 
                 currentEnemy = currentRoom.getEnemies().get(0);
-                sb.append("\nDo boje vstupuje další nepřítel: ")
+                sb.append("\n"+"\nDo boje vstupuje další nepřítel: ")
                         .append(currentEnemy.getName());
 
             } else {
 
                 currentPlayer.setLives(currentPlayer.getLives() + getCurrentEnemy().getMaxLives());
+                sb.append("\nZ "+currentEnemy.getName()+" si vysal magickou energii a obnosil si "+currentEnemy.getMaxLives()+" zdravi.");
 
                 currentEnemy = null;
                 inCombat = false;

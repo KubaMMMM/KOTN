@@ -10,6 +10,6 @@ class Main {
         ui.gameStart();
 
 
-        //TODO: udelat chyby v rsc a dodelat rsc a jar, oprav lektvar,
+        //TODO: udelat jarj
     }
 }

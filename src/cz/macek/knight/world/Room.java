@@ -12,11 +12,11 @@ public class Room {
     private Room roomSouth;
     private Room roomEast;
     private Room roomWest;
-    private String description;
-    private ArrayList<Item> itemsList;
-    private ArrayList<Character> characterList;
+    protected String description;
+    protected ArrayList<Item> itemsList;
+    protected ArrayList<Character> characterList;
     private boolean examined;
-    private String clearedDescription;
+    protected String clearedDescription;
 
 
 
@@ -37,11 +37,6 @@ public class Room {
             return clearedDescription;
         }
 
-        if (this instanceof CastleRoom castle) {
-            if (!castle.getUnlocked()) {
-                return clearedDescription;
-            }
-        }
 
         return description;
     }

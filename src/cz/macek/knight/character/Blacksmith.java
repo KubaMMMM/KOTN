@@ -12,11 +12,11 @@ public class Blacksmith extends Ally {
     @Override
     public String interact(Player player, Game game) {
         if (player.getArmor() != null) {
-            return "Zbroj už máš. Víc ti teď pomoci nemohu.";
+            return "Kovar: Zbroj už máš. Víc ti teď pomoci nemohu.";
         }
 
         if (!player.hasItem("poklad")) {
-            return "Bez peněz ti zbroj nevyrobím. Na pláži je prý vrak lodi…";
+            return "Kovar: Kdyz mi prineses neco cenneho vyrobim ti zbroj.";
         }
 
         // výroba zbroje

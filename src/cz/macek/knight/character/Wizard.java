@@ -13,11 +13,11 @@ public class Wizard extends Ally {
     public String interact(Player player, Game game) {
 
         if(player.knowsWeakness()){
-            return "Drak uz nema dalsi slabiny";
+            return "Zaklinac: Drak uz nema dalsi slabiny.";
         }
 
         if(!game.isOgreDefeated()){
-            return "Kdyz zbavis jeskyni u pole obra tak ti prozradim drakovu slabinu";
+            return "Zaklinac: Kdyz zbavis jeskyni u pole obra tak ti prozradim drakovu slabinu.";
         }
 
         revealWeakness(player);

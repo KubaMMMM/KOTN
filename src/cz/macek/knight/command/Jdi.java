@@ -42,9 +42,11 @@ public class Jdi implements Command{
         game.getCurrentPlayer().setPosition(nextRoom);
 
         if (nextRoom.containsEnemy()) {
+
             game.setCurrentEnemy(nextRoom.getEnemies().get(0));
             game.setInCombat(true);
-            return "Vstupujete do souboje s "
+            return "Nacházíš se v místnosti: "
+                    + nextRoom.getDescription()+"\n"+ "Vstupujete do souboje s "
                     + game.getCurrentEnemy().getName();
         }
 

@@ -15,14 +15,14 @@ public class CharacterFactory {
 
 
             case "ogre" :
-                    return new Enemy("zlobr", 2, 2);
+                    return new Enemy("zlobr", 5, 2);
 
 
             case "imp" :
                     return new Enemy("imp", 2, 1);
 
             case "undead" :
-                    return new Enemy("nemrtvyStrazce", 2, 1);
+                    return new Enemy("nemrtvyStrazce", 4, 1);
 
 
             case "blacksmith" :

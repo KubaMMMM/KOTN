@@ -65,7 +65,7 @@ public class Player extends Character {
      */
     public int attackDamage(Enemy e) {
 
-        int damage = 1; // základní útok
+        int damage = 1;
 
         if (weapon != null) {
             damage += weapon.getDamage();
