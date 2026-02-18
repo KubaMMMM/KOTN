@@ -10,7 +10,7 @@
     },
     "shield": {
       "name": "stit",
-      "blockPower": 2
+      "blockPower": 1
     },
     "potion": {
       "name": "lektvar"

@@ -50,7 +50,7 @@ public class Player extends Character {
 
 
     public boolean tryDodge() {
-        return Math.random() < 0.25; // 25 %
+        return Math.random() < 0.5; // 50 %
     }
 
 
@@ -79,8 +79,9 @@ public class Player extends Character {
     }
 
 
-
-
+    public boolean hasArmor(){
+        return armor != null;
+    }
 
 
     public void loseLife() {

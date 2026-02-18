@@ -60,11 +60,16 @@ public class Enemy extends Character {
             int dealtDamage = damage + 1;
 
             if (player.isDefending()) {
-                dealtDamage -= 1;
+                dealtDamage -= 2;
                 if (player.hasShield()) {
                     dealtDamage -= player.getShield().getBlockPower();
                 }
             }
+
+            if(player.hasArmor()){
+                dealtDamage -= player.getArmor().getDefense();
+            }
+
 
             if (dealtDamage < 0) {
                 dealtDamage = 0;
@@ -108,6 +113,9 @@ public class Enemy extends Character {
 
         }
 
+        if(player.hasArmor()){
+            dealtDamage -= player.getArmor().getDefense();
+        }
 
         dealDamage(player, dealtDamage);
         return name + " tě zasáhl za " + dealtDamage + " HP.";

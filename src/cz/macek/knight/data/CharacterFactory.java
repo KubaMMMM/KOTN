@@ -15,7 +15,7 @@ public class CharacterFactory {
 
 
             case "ogre" :
-                    return new Enemy("zlobr", 5, 2);
+                    return new Enemy("zlobr", 4, 2);
 
 
             case "imp" :

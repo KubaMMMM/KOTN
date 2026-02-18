@@ -10,6 +10,11 @@ public class Jdi implements Command{
     @Override
     public String execute(String param, Game game) {
 
+        if(param.isEmpty()){
+                return "Za 'jdi' musite zadat prvni pismeno svetove strany napr. - 'jdi S'";
+        }
+
+
         if (game.isInCombat()) {
             return "Nepřítel vás nenechá odejít.";
         }
@@ -29,6 +34,7 @@ public class Jdi implements Command{
             case "z":
                 nextRoom = game.getCurrentRoom().getRoomWest();
                 break;
+
             default:
                 return "Tímto směrem se jít nedá.";
         }

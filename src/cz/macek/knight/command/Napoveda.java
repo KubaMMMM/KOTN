@@ -9,23 +9,29 @@ public class Napoveda implements Command {
 
         Player player = game.getCurrentPlayer();
 
-        if (!player.hasItem("poklad")) {
-            return "Vydej se na východ. Na pláži u vraku lodi se nachází něco, co budeš potřebovat.";
-        }
 
         if (player.getArmor() == null) {
+
+            if (!player.hasItem("poklad")) {
+                return "Vydej se na východ. Na pláži u vraku lodi se nachází něco, co budeš potřebovat.";
+            }
+
             return "S nalezeným pokladem se vrať do vesnice. Kovář ti z něj může vyrobit zbroj.";
         }
 
-        if (!player.hasItem("castKlice1")) {
-            return "V lese se nachází nebezpečí, ale také něco důležitého. Prozkoumej ho.";
-        }
 
-        if (!player.hasItem("castKlice2")) {
-            return "Na louce hlídá nemrtvý strážce cenný předmět. Bez něj se dál nedostaneš.";
-        }
 
         if (!player.hasItem("stit")) {
+
+            if (!player.hasItem("castKlice1")) {
+                return "V lese se nachází nebezpečí, ale také něco důležitého. Prozkoumej ho.";
+            }
+
+            if (!player.hasItem("castKlice2")) {
+                return "Na louce hlídá nemrtvý strážce cenný předmět. Bez něj se dál nedostaneš.";
+            }
+
+
             return "Spoj obě části klíče a odemkni zamčenou komnatu na hradě. Najdeš tam štít.";
         }
 

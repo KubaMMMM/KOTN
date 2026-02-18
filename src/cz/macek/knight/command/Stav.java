@@ -76,11 +76,11 @@ public class Stav implements Command{
         boolean halfHeart = (lives % 2) == 1;
 
         for (int i = 0; i < fullHearts; i++) {
-            hearts.append("❤️");
+            hearts.append("<3");
         }
 
         if (halfHeart) {
-            hearts.append("💔");
+            hearts.append("<");
         }
 
         if (lives <= 0) {

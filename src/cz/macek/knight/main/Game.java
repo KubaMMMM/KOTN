@@ -82,7 +82,7 @@ public class Game {
             } else {
 
                 currentPlayer.setLives(currentPlayer.getLives() + getCurrentEnemy().getMaxLives());
-                sb.append("\nZ "+currentEnemy.getName()+" si vysal magickou energii a obnosil si "+currentEnemy.getMaxLives()+" zdravi.");
+                sb.append("\nZ "+currentEnemy.getName()+" si vysal magickou energii a obnovil si "+currentEnemy.getMaxLives()+" zdravi.");
 
                 currentEnemy = null;
                 inCombat = false;

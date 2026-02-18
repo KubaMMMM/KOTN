@@ -8,20 +8,26 @@ public class Pomoc implements Command{
         return
                 "Dostupné příkazy:\n" +
                         "----------------------------------\n" +
-                        "jdi <S|J|V|Z> – přesune tě do sousední lokace daným směrem\n" +
-                        "prozkoumej – prohlédne aktuální lokaci, postavy a předměty\n" +
-                        "vezmi <předmět> – sebere předmět z aktuální lokace\n" +
-                        "odhodit <předmět> – odhodí předmět z inventáře do lokace\n" +
-                        "pouzij <předmět> – použije předmět z inventáře (např. lektvar)\n" +
-                        "mluv <postava> – promluví s postavou v lokaci\n" +
-                        "utok – provede útok na nepřítele v boji\n" +
-                        "obrana – brání se proti příštímu útoku nepřítele\n" +
-                        "uhnout – pokusí se vyhnout útoku nepřítele\n" +
-                        "inventar – zobrazí obsah tvého batohu\n" +
-                        "napoveda – poskytne radu, co dělat dál\n" +
-                        "pomoc – zobrazí tento seznam příkazů\n" +
-                        "konec – ukončí hru\n" +
+                        "jdi <S|J|V|Z> - přesune tě do sousední lokace daným směrem\n" +
+                        "prozkoumej - prohlédne aktuální lokaci, postavy a předměty\n" +
+                        "vezmi <předmět> - sebere předmět z aktuální lokace\n" +
+                        "odhodit <předmět> - odhodí předmět z inventáře do lokace\n" +
+                        "pouzij <předmět> - použije předmět z inventáře (např. lektvar)\n" +
+                        "mluv <postava> - promluví s postavou v lokaci\n" +
+                        "inventar - zobrazí obsah tvého batohu\n" +
+                        "napoveda - poskytne radu, co dělat dál\n" +
+                        "pomoc - zobrazí tento seznam příkazů\n" +
+                        "konec - ukončí hru\n" +
                         "stav - zobrazi hracuv aktualni stav\n"+
-                        "mapa - zobrazi mapu hry\n";
+                        "mapa - zobrazi mapu hry\n"+
+                        "odemkni - odemkne zamcenou vec/prostor kdyz mate klic\n"+
+
+                        "------------------------------------\n"+
+                        "Prikazy pro boj:\n"+
+                        "utok - provede útok na nepřítele v boji\n" +
+                        "obrana - brání se proti příštímu útoku nepřítele\n" +
+                        "uhnout - pokusí se vyhnout útoku nepřítele\n" +
+                        "-------------------------------------";
+
     }
 }
