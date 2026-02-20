@@ -6,7 +6,7 @@ public class Dragon extends Enemy {
 
 
     public Dragon() {
-        super("drak", 6, 2);
+        super("drak", 8, 3);
     }
 
 
@@ -49,7 +49,7 @@ public class Dragon extends Enemy {
 
     private String strongAttack(Player player) {
 
-        int dmg = 3;
+        int dmg = 4;
 
         player.setDodging(false);
 
@@ -76,6 +76,10 @@ public class Dragon extends Enemy {
     private String clawAttack(Player player) {
 
         int dmg = damage; // 2
+
+        if (!player.hasShield()) {
+            dmg += 1;
+        }
 
         player.setDodging(false);
 
@@ -105,7 +109,7 @@ public class Dragon extends Enemy {
         player.setDodging(false);
 
         if (!player.hasFireResistance()) {
-            player.setLosingHP(1);
+            player.setLosingHP(2);
         }
 
         if (player.isDefending()) {
