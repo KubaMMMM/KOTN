@@ -2,6 +2,12 @@ package cz.macek.knight.data;
 
 import cz.macek.knight.item.*;
 
+/**
+ * Factory třída pro vytváření předmětů ze struktury JSON.
+ *
+ * Podle typu předmětu vytváří odpovídající instanci
+ * (Weapon, Armor, Shield, Potion, ...).
+ */
 public class ItemFactory {
 
     public static Item create(String itemId, ItemData data) {

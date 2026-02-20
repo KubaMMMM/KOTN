@@ -56,11 +56,14 @@ public class Room {
     }
 
 
-
     /**
      * Zjistí, zda se v místnosti nachází alespoň jeden nepřítel.
      *
-     * @return true pokud je v místnosti nepřítel
+     * Používá se pro:
+     * - automatické zahájení boje
+     * - blokování některých akcí (např. sbírání předmětů)
+     *
+     * @return true pokud je přítomen nepřítel
      */
     public boolean containsEnemy(){
 
@@ -73,7 +76,13 @@ public class Room {
         return false;
     }
 
-
+    /**
+     * Vypíše všechny postavy a předměty nacházející se v místnosti.
+     *
+     * Pokud je místnost prázdná, vrací text "nic".
+     *
+     * @return textový seznam entit
+     */
     public String vypisEntit(){
         StringBuilder sb = new StringBuilder();
 

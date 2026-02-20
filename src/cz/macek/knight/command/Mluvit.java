@@ -7,6 +7,10 @@ public class Mluvit implements Command{
 
     public String execute(String param, Game game) {
 
+        if(param.isEmpty()){
+            return "Za 'mluv' napiste s kym chcete mluvit napr.: 'mluv kovar'";
+        }
+
         if(game.getCurrentRoom().getCharacter(param) == null){
 
             return "Nido takovy v okoli neni";

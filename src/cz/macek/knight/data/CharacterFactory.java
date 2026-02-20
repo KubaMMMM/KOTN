@@ -3,6 +3,16 @@ package cz.macek.knight.data;
 import cz.macek.knight.character.*;
 import cz.macek.knight.character.Character;
 
+
+
+/**
+ * Factory třída pro vytváření herních postav.
+ *
+ * Na základě identifikátoru (charId) vrací
+ * konkrétní instanci postavy.
+ *
+ * Používá se při načítání herního světa z JSON.
+ */
 public class CharacterFactory {
 
     public static Character create(String charId) {

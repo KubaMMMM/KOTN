@@ -3,7 +3,13 @@ package cz.macek.knight.item;
 import java.util.ArrayList;
 
 /**
- * Batoh hráče - inventář
+ * Reprezentuje inventář hráče.
+ *
+ * Inventář má omezenou kapacitu.
+ * Umožňuje:
+ * - přidávání předmětů
+ * - odebírání předmětů
+ * - kontrolu přítomnosti předmětu
  */
 public class Backpack {
     private int size;

@@ -55,12 +55,16 @@ public class Player extends Character {
 
 
     /**
-     * Spočítá poškození způsobené hráčem nepříteli.
+     * Vypočítá základní poškození způsobené hráčem.
      *
-     * Metoda pouze vypočítá hodnotu poškození,
-     * samotné odečtení životů provádí třída Game.
+     * Výpočet zahrnuje:
+     * - základní sílu útoku (1)
+     * - bonus ze zbraně
+     * - případné speciální modifikátory (např. slabina draka)
      *
-     * @param e nepřítel, na kterého hráč útočí
+     * Samotné odečtení životů provádí třída Game.
+     *
+     * @param e cílový nepřítel
      * @return hodnota poškození
      */
     public int attackDamage(Enemy e) {
@@ -84,13 +88,14 @@ public class Player extends Character {
     }
 
 
-    public void loseLife() {
-        lives--;
-    }
 
     /**
-     * Aplikuje průběžné poškození (např. hoření).
-     * Volá se po každém tahu nepřítele.
+     * Aplikuje průběžné poškození hráče.
+     *
+     * Používá se například při efektu hoření.
+     * Metoda je volána po tahu nepřítele.
+     *
+     * Pokud životy klesnou pod nulu, nastaví se na 0.
      */
     public void applyLoosingHP() {
 
@@ -143,17 +148,11 @@ public class Player extends Character {
         this.shield = shield;
     }
 
-    public boolean isHasFireResistance() {
-        return hasFireResistance;
-    }
 
     public void setHasFireResistance(boolean hasFireResistance) {
         this.hasFireResistance = hasFireResistance;
     }
 
-    public boolean isKnowsWeakness() {
-        return knowsWeakness;
-    }
 
     public void setDefending(boolean defending) {
         this.isDefending = defending;

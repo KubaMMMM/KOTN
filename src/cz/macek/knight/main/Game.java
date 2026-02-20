@@ -46,10 +46,18 @@ public class Game {
 
 
     /**
-     * Provede útok hráče na aktuálního nepřítele
-     * a následně tah nepřítele.
+     * Provede jedno kolo boje z pohledu hráče.
      *
-     * @return výsledek kola boje
+     * Průběh:
+     * - hráč zaútočí na aktuálního nepřítele
+     * - zkontroluje se, zda nepřítel zemřel
+     * - pokud žije, provede svůj tah
+     * - aplikují se průběžné efekty (např. hoření)
+     * - vyhodnotí se smrt hráče
+     *
+     * Pokud je poražen drak, hra končí vítězstvím.
+     *
+     * @return textový popis průběhu kola
      */
     public String attack() {
 
@@ -106,9 +114,12 @@ public class Game {
 
 
     /**
-     * Pokus o obranu proti útoku nepřítele.
+     * Aktivuje obranný postoj hráče pro následující útok nepřítele.
      *
-     * @return výsledek obrany
+     * Obrana snižuje utržené poškození podle pravidel boje
+     * (základní redukce + bonus ze štítu).
+     *
+     * @return výsledek nepřátelského tahu
      */
     public String defend() {
 
@@ -134,11 +145,12 @@ public class Game {
 
 
     /**
-     * Prohledá aktuální místnost.
+     * Pokusí se vyhnout útoku nepřítele.
      *
-     * Pokud je přítomen nepřítel, zahájí boj.
+     * Šance na úspěch je určena metodou Player.tryDodge().
+     * Při úspěchu hráč neutrpí žádné poškození.
      *
-     * @return popis výsledku průzkumu
+     * @return výsledek pokusu o vyhnutí
      */
     public String dodge() {
 
@@ -162,9 +174,14 @@ public class Game {
     /**
      * Pokusí se odemknout hradní komnatu.
      *
-     * Metoda ověřuje, zda se hráč nachází v hradní místnosti
-     * a zda má obě části klíče. Při úspěchu komnatu odemkne
-     * a klíče odebere z inventáře.
+     * Ověřuje:
+     * - zda se hráč nachází v CastleRoom
+     * - zda komnata již není odemčena
+     * - zda hráč vlastní obě části klíče
+     *
+     * Při úspěchu:
+     * - komnatu odemkne
+     * - odebere obě části klíče z inventáře
      *
      * @return výsledek pokusu o odemknutí
      */
@@ -204,11 +221,10 @@ public class Game {
     /**
      * Prohledá aktuální místnost.
      *
-     * Pokud hráč není v boji a v místnosti se nachází nepřítel,
-     * zahájí se boj. V opačném případě metoda vypíše seznam
-     * postav a předmětů v místnosti a označí ji jako prozkoumanou.
+     * Pokud hráč není v boji, zobrazí seznam postav
+     * a předmětů nacházejících se v lokaci.
      *
-     * @return textový popis výsledku prohledání nebo zahájení boje
+     * @return popis nalezených entit
      */
     public String search() {
 
@@ -225,7 +241,20 @@ public class Game {
         return cave != null && !cave.containsEnemy();
     }
 
-
+    /**
+     * Zpracuje textový vstup hráče.
+     *
+     * Metoda:
+     * - rozdělí vstup na název příkazu a parametr
+     * - vyhledá odpovídající implementaci v CommandParser
+     * - provede příkaz nad aktuálním stavem hry
+     *
+     * Pokud příkaz neexistuje nebo je vstup prázdný,
+     * vrací chybovou hlášku.
+     *
+     * @param input text zadaný hráčem
+     * @return výsledek vykonání příkazu
+     */
     public String processCommand(String input) {
 
         if (input == null || input.trim().isEmpty()) {
@@ -251,6 +280,23 @@ public class Game {
         inCombat = true;
     }
 
+
+
+    /**
+     * Inicializuje novou hru.
+     *
+     * Metoda:
+     * 1) Načte herní svět ze souboru world.json pomocí GameLoader.
+     * 2) Vytvoří mapu místností a propojí jejich exity.
+     * 3) Nastaví výchozí místnost ("village").
+     * 4) Vytvoří instanci hráče a umístí jej do startovní lokace.
+     * 5) Vrátí úvodní text příběhu.
+     *
+     * Pokud se nepodaří načíst svět nebo neexistuje startovní místnost,
+     * hra je ukončena a vrací se chybová hláška.
+     *
+     * @return úvodní text hry nebo chybová zpráva
+     */
     public String start() {
 
         try {

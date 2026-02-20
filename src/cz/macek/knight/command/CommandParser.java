@@ -3,9 +3,19 @@ package cz.macek.knight.command;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
+/**
+ * Registruje a spravuje všechny herní příkazy.
+ *
+ * Mapuje textový vstup hráče na konkrétní implementaci
+ * rozhraní Command.
+ */
 public class CommandParser {
 
     private Map<String, Command> commands = new HashMap<>();
+
+
 
     public CommandParser() {
         commands.put("jdi", new Jdi());

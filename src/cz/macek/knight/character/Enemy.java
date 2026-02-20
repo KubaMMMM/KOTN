@@ -32,9 +32,20 @@ public class Enemy extends Character {
     }
 
     /**
-     * Provede jeden tah nepřítele během boje.
+     * Provede tah nepřítele během boje.
      *
-     * @param player hráč, proti kterému nepřítel bojuje
+     * Nepřítel může:
+     * - zahájit nabíjení silného útoku
+     * - provést běžný útok
+     * - provést silný útok (pokud byl nabíjen)
+     *
+     * Poškození je ovlivněno:
+     * - obranou hráče
+     * - štítem
+     * - zbrojí
+     * - úspěšným vyhnutím
+     *
+     * @param player hráč, proti kterému je útok veden
      * @return textový popis akce
      */
     public String takeTurn(Player player) {
@@ -141,6 +152,13 @@ public class Enemy extends Character {
         plr.setLives(plr.getLives() - amount);
     }
 
+    /**
+     * Vrátí text oznamující porážku nepřítele.
+     *
+     * Metoda může být přepsána u speciálních typů nepřátel.
+     *
+     * @return text o smrti nepřítele
+     */
     public String die() {
         return name + " byl poražen!";
     }

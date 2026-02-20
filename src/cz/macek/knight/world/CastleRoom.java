@@ -66,6 +66,14 @@ public class CastleRoom extends Room {
         return "zamcena komnata";
     }
 
+
+    /**
+     * Odemkne hradní komnatu.
+     *
+     * Po odemčení:
+     * - je možné zobrazit předměty v místnosti
+     * - změní se popis lokace na "clearedDescription"
+     */
     public void unlock() {
         this.isUnlocked = true;
     }

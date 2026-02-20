@@ -10,11 +10,24 @@ import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
 
+
+
+
+
+/**
+ * Načítá herní svět ze souboru JSON umístěného v resources.
+ *
+ * Vytváří:
+ * - instance místností
+ * - propojení mezi místnostmi (exity)
+ * - předměty
+ * - postavy
+ *
+ * Používá Jackson ObjectMapper pro deserializaci dat.
+ */
 public class GameLoader {
 
-    /**
-     * Načte herní svět ze souboru JSON uloženého v resources
-     */
+
     public static Map<String, Room> loadRooms(String fileName) {
 
         ObjectMapper mapper = new ObjectMapper();

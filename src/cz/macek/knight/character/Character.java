@@ -6,8 +6,12 @@ import cz.macek.knight.world.Room;
 /**
  * Abstraktní základní třída pro všechny herní postavy.
  *
- * Slouží jako společný předek pro hráče, spojence i nepřátele.
- * Každá postava má jméno, životy a možnost interakce s hráčem.
+ * Společné vlastnosti:
+ * - jméno
+ * - životy
+ *
+ * Každá postava musí implementovat metodu interact(),
+ * která definuje chování při interakci s hráčem.
  */
 public abstract class Character {
     protected String name;
