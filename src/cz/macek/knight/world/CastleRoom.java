@@ -33,6 +33,13 @@ public class CastleRoom extends Room {
         return description;
     }
 
+
+    /**
+     * prepsani metody z Room
+     * kdyz je mistnost zamkla tak se vypise ze v ni je pouze zamcena komnata
+     * kdzy odemkla tak se vypise co v ni je
+     * @return String predmetu v mistnosti
+     */
     public String vypisEntit() {
         StringBuilder sb = new StringBuilder();
 
