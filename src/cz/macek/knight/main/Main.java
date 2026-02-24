@@ -7,8 +7,8 @@ import java.util.Scanner;
  *
  * Textová adventura v jazyce Java.
  *
- * Autor: Jakub Maček
- * Škola: SPŠE Ječná
+ * @Author Jakub Maček
+ * Škola SPŠE Ječná
  * Rok: 2026
  */
 public class Main {

@@ -139,10 +139,7 @@ konec
 ## SPUŠTĚNÍ
 
 1. Vytvoř spustitelný JAR přes IDE (IntelliJ IDEA – Build Artifact).
-2. Ve složce s výsledným souborem spusť:
-
-```
-java -jar KOTN.jar
+2. Ve složce s výsledným souborem spusť: java -jar KOTN.jar
 ```
 
 Hra probíhá v konzoli.
