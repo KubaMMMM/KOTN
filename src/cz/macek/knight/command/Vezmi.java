@@ -12,19 +12,17 @@ import java.util.ArrayList;
 
 
 
-/**
- * Reprezentuje hráče ve hře.
- *
- * Hráč má:
- * - omezený inventář (Backpack) pro běžné předměty
- * - dedikované sloty pro vybavení (zbraň, zbroj, štít)
- *
- * Vybavení se neukládá do inventáře, ale přímo do slotů.
- * Díky tomu:
- * - nezabírá místo v batohu
- * - okamžitě ovlivňuje bojové výpočty
- */
 public class Vezmi implements Command{
+
+    /**
+     * prikaz co se pokusi pridat do inventare vec z mistnosti
+     *
+     * pokud ma plny inventar pouze se vypise informace o plnosti
+     * pokud je hrac v boji nemuze sbirat
+     * @param param jmeno predmetu co chceme brat
+     * @param game aktuální hra
+     * @return zda byla vec uspesne sebrana nebo jestle ne a nebo jestli ma plny inv
+     */
     @Override
     public String execute(String param, Game game) {
 

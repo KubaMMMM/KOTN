@@ -7,6 +7,14 @@ import cz.macek.knight.main.Game;
 import java.util.ArrayList;
 
 public class Pouzij implements Command{
+
+    /**
+     * prikaz se pokousi pouzit item z inventare -ve hre je jen jeden pouzitelny predmet -> pri pridani vice takovych predmetu je nuten prepsat
+     *
+     * @param param jmeno predmetu
+     * @param game aktuální hra
+     * @return informace o pouziti
+     */
     @Override
     public String execute(String param, Game game) {
 

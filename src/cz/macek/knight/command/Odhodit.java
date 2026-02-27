@@ -4,6 +4,14 @@ import cz.macek.knight.item.Item;
 import cz.macek.knight.main.Game;
 
 public class Odhodit implements Command{
+
+    /**
+     * prikaz co se pokusi vyhodit neco z inventare
+     *
+     * @param param jmeno predmetu co chceme vyhodit
+     * @param game aktuální hra
+     * @return jestli bylo vyhozeni uspene, nebo jestli predmet nemame
+     */
     @Override
     public String execute(String param, Game game) {
 

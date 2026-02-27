@@ -4,6 +4,15 @@ import cz.macek.knight.character.Player;
 import cz.macek.knight.main.Game;
 
 public class Stav implements Command{
+
+
+    /**
+     * prikaz co hraci vypise stav jeho postavy
+     *
+     * @param param nepouziva se
+     * @param game aktuální hra
+     * @return pocet zivotu, predmety co ma na sobe a v inv
+     */
     @Override
     public String execute(String param, Game game) {
 

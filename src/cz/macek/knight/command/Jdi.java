@@ -6,7 +6,15 @@ import cz.macek.knight.world.Room;
 public class Jdi implements Command{
 
 
-
+    /**
+     * prikaz na posouvani v lokacich(mistnostech) pomoci zkratek svetovych stran(S,V,Z,J)
+     * v pripade ze v mistnosti do ktere se presunul nekdo je zahaji s nim souboj
+     * kdyz je param prazdy informuje o spatnem zadani prikazu
+     * pokud je v combat tak nedovoli jit do jine mistnosti
+     * @param param zkratka svet strany
+     * @param game aktuální hra
+     * @return popis mistnosti do ktere jsme se presunili
+     */
     @Override
     public String execute(String param, Game game) {
 

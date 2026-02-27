@@ -3,6 +3,14 @@ package cz.macek.knight.command;
 import cz.macek.knight.main.Game;
 
 public class Mluvit implements Command{
+
+
+    /**
+     * prikaz, ktery lze pouzit na Ally -> vykona se s nim interakce
+     * @param param jmeno postavy s kterou chceme mluvit
+     * @param game aktuální hra
+     * @return String co Ally rekne
+     */
     @Override
 
     public String execute(String param, Game game) {

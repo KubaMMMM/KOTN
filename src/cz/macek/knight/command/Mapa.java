@@ -4,7 +4,13 @@ import cz.macek.knight.main.Game;
 
 public class Mapa implements Command{
 
-
+    /**
+     * prikaz ktery vypise model mapy s legendou
+     *
+     * @param param nepouziva se
+     * @param game aktuální hra
+     * @return mapa z String
+     */
     @Override
     public String execute(String param, Game game) {
 

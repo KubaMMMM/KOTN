@@ -3,6 +3,14 @@ package cz.macek.knight.command;
 import cz.macek.knight.main.Game;
 
 public class Pomoc implements Command{
+
+    /**
+     * prikaz co hraci vypise vsechny dostupne prikazy
+     *
+     * @param param nepouziva se
+     * @param game aktuální hra
+     * @return String vsech prikazu
+     */
     @Override
     public String execute(String param, Game game) {
         return

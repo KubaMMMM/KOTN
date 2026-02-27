@@ -3,7 +3,17 @@ package cz.macek.knight.command;
 import cz.macek.knight.character.Player;
 import cz.macek.knight.main.Game;
 
+
+
 public class Napoveda implements Command {
+
+    /**
+     * vypise hracovi co ma delat v danem bode aby se uspesne posunul k dohrani hry
+     *
+     * @param param nepouziva se
+     * @param game aktuální hra
+     * @return String s napovedou
+     */
     @Override
     public String execute(String param, Game game) {
 

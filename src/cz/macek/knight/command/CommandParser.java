@@ -6,10 +6,7 @@ import java.util.Map;
 
 
 /**
- * Registruje a spravuje všechny herní příkazy.
- *
- * Mapuje textový vstup hráče na konkrétní implementaci
- * rozhraní Command.
+ * Registruje a spravuje všechny herní příkazy v Map aby sli podle jmena lechce vybrat
  */
 public class CommandParser {
 

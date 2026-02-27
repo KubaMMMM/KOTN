@@ -3,6 +3,10 @@ package cz.macek.knight.main;
 
 import java.util.Scanner;
 
+
+/**
+ * lehka trida na handlovani vstupu hrace a na samotne odstartovani
+ */
 public class UI  {
 
     private Game game;
